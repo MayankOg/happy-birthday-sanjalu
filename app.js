@@ -156,7 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
     'eyes-childhood': 'assets/images/eyes-childhood.jpg',
     'eyes-recent': 'assets/images/eyes-recent.jpg',
     'leap-hero': 'assets/images/leap-hero.jpg',
-    'leap-helmet': 'assets/images/leap-helmet.jpg'
+    'leap-helmet': 'assets/images/leap-helmet.jpg',
+    'leap-bike': 'assets/images/leap-bike.jpg',
+    'leap-car': 'assets/images/leap-car.jpg'
   };
 
   window.assignPhoto = function(slotId, imageSrc, captionText = '') {
