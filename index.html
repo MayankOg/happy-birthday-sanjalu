@@ -3,697 +3,529 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SANJALU — Notes on Becoming | Volume XXIV</title>
+  <title>SANJALU — Happy Birthday Chotu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Birthday Opener / Asset Loader Curtain -->
+  <!-- Birthday Curtain Opener -->
   <div class="hbd-curtain" id="hbdCurtain">
     <div class="curtain-content">
-      <div class="curtain-badge">A RETROSPECTIVE FOR</div>
-      <h1 class="curtain-name">Sanjalu</h1>
-      <p class="curtain-subtitle">Happy 24th Birthday, Chotu</p>
+      <div class="curtain-badge">HAPPY BIRTHDAY SANJALU</div>
+      <h1 class="curtain-name">mera chotu</h1>
+      <p class="curtain-subtitle">Not a big note person thouu but will tryy 😉</p>
       <div class="curtain-loader">
         <div class="loader-bar" id="loaderBar"></div>
       </div>
       <button class="enter-btn" id="enterBtn">
-        <span>Enter Retrospective</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <span>Turn Pages 📖</span>
       </button>
-      <span class="curtain-hint">♪ Tap to enter with music</span>
+      <span class="curtain-hint">♪ Tap to open with music</span>
     </div>
   </div>
 
-  <!-- Background Audio Player -->
+  <!-- Background Music Player -->
   <audio id="bgAudio" loop preload="auto">
     <source src="assets/birthday.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Floating Audio Toggle -->
-  <button class="audio-toggle" id="audioToggle" aria-label="Toggle Birthday Music">
+  <!-- Audio Toggle Floating Pill -->
+  <button class="audio-toggle" id="audioToggle" aria-label="Toggle Audio">
     <span class="audio-icon" id="audioIcon">♪</span>
     <span class="audio-label" id="audioLabel">Music: Off</span>
   </button>
 
+  <!-- Page Indicator Floating Counter -->
+  <div class="page-counter" id="pageCounter">1 / 13</div>
+
+  <!-- Navigation Arrows -->
+  <div class="book-nav">
+    <button class="nav-arrow prev-btn" id="prevBtn" aria-label="Previous Page">← Prev</button>
+    <button class="nav-arrow next-btn" id="nextBtn" aria-label="Next Page">Next →</button>
+  </div>
+
   <!-- Film Grain Overlay -->
   <div class="film-grain"></div>
 
-  <!-- Top Navigation Bar -->
-  <nav class="nav-bar">
-    <div class="nav-brand">SANJALU <span>// VOL. XXIV</span></div>
-    <button class="nav-toggle" id="menuToggle" aria-label="Open Table of Contents">
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-  </nav>
+  <!-- BOOK FLIP WRAPPER -->
+  <div class="book-viewport">
+    <div class="book-stage" id="bookStage">
 
-  <!-- Table of Contents Drawer -->
-  <aside class="drawer" id="drawer">
-    <div class="drawer-header">
-      <span class="drawer-title">THE SEASONS OF BECOMING</span>
-      <button class="close-btn" id="closeDrawer" aria-label="Close Drawer">&times;</button>
-    </div>
-    <ul class="drawer-links">
-      <li><a href="#act-0" class="drawer-link"><span class="num">00</span> Cover: Sanjalu</a></li>
-      <li><a href="#act-1" class="drawer-link"><span class="num">01</span> The Eyes (Roots & Childhood)</a></li>
-      <li><a href="#act-2" class="drawer-link"><span class="num">02</span> The Leap (Courage & Stepping Up)</a></li>
-      <li><a href="#act-3" class="drawer-link"><span class="num">03</span> The Palate (A Map of Flavors)</a></li>
-      <li><a href="#act-4" class="drawer-link"><span class="num">04</span> The Wardrobe (Style & Glow)</a></li>
-      <li><a href="#act-5" class="drawer-link"><span class="num">05</span> The Heartbeat (Little Juju)</a></li>
-      <li><a href="#act-6" class="drawer-link"><span class="num">06</span> The Sisterhood (Chunna & Mansi)</a></li>
-      <li><a href="#act-7" class="drawer-link"><span class="num">07</span> The Cities (Her Footprint)</a></li>
-      <li><a href="#act-8" class="drawer-link"><span class="num">08</span> The Quiet Strength (What She Carried)</a></li>
-      <li><a href="#act-9" class="drawer-link"><span class="num">09</span> The Unfinished Song (Her Voice)</a></li>
-      <li><a href="#act-10" class="drawer-link"><span class="num">10</span> The Independence (Casa Rio & Ambition)</a></li>
-      <li><a href="#act-11" class="drawer-link"><span class="num">11</span> The Letter (To The Birthday Girl)</a></li>
-      <li><a href="#act-12" class="drawer-link"><span class="num">12</span> The Teaser (December 1 in Print)</a></li>
-    </ul>
-  </aside>
+      <!-- PAGE 0: COVER -->
+      <article class="book-page active" data-page="0" id="page-0">
+        <div class="page-inner cover-page">
+          <div class="page-meta">VOL. XXIV • 3RD NOV</div>
+          <h1 class="page-title-huge">SANJALU</h1>
+          <p class="page-tagline">mera chotu turns 24 today 🥰</p>
 
-  <!-- MAIN EDITORIAL CONTAINER -->
-  <main class="editorial-container">
-
-    <!-- ACT 00: THE COVER -->
-    <header class="act-section hero-section" id="act-0">
-      <div class="hero-content">
-        <div class="editorial-meta">
-          <span>AN EDITORIAL RETROSPECTIVE</span>
-          <span class="dot">•</span>
-          <span>NOVEMBER 3, 2026</span>
-        </div>
-        <h1 class="hero-title">SANJALU</h1>
-        <p class="hero-subtitle">Notes on Becoming: A Visual Archive of Strength, Style & Spirit</p>
-
-        <div class="hero-frame-container">
-          <div class="image-slot hero-slot" data-slot-id="cover-hero">
+          <div class="image-slot cover-slot" data-slot-id="cover-hero">
             <div class="placeholder-box">
-              <span class="slot-badge">COVER HERO PORTRAIT</span>
-              <p class="slot-desc">A striking, natural, candid portrait of Sanjali in her element. Dazz Cam 35mm warmth, candid smile, pretty eyes.</p>
-              <span class="slot-action">+ Assign cover-hero photo</span>
+              <span class="slot-badge">COVER HERO PHOTO</span>
+              <p class="slot-desc">A standout candid of her looking pretty, natural smile, 35mm warmth.</p>
+              <span class="slot-action">+ Assign cover-hero</span>
             </div>
           </div>
-          <div class="caption-handwritten">The girl with the world in her eyes.</div>
+
+          <div class="stanza-block">
+            <p>happyyy birthday to u sanjalii 🥰🥰😘</p>
+            <p>not a big note person thouu so pardon any faults</p>
+            <p>par chl flipped some pages fr u hehe</p>
+          </div>
+          <div class="caption-handwritten">swipe or click next to flip →</div>
         </div>
+      </article>
 
-        <div class="scroll-prompt">
-          <span>Scroll down into the seasons</span>
-          <div class="scroll-line"></div>
-        </div>
-      </div>
-    </header>
+      <!-- PAGE 1: THE EYES -->
+      <article class="book-page" data-page="1" id="page-1">
+        <div class="page-inner">
+          <div class="page-header">
+            <span class="page-num">PAGE 01</span>
+            <h2 class="page-heading">The Eyes</h2>
+            <span class="page-location">INDORE // STILL THE SAME</span>
+          </div>
 
-    <!-- ACT 01: THE EYES -->
-    <section class="act-section" id="act-1">
-      <div class="act-header">
-        <span class="act-num">ACT 01</span>
-        <h2 class="act-title">The Eyes</h2>
-        <span class="act-time">INDORE // TIMELESS GAZE</span>
-      </div>
-
-      <div class="act-grid">
-        <div class="text-column">
-          <p class="dropcap">B</p>
-          <p class="prose-para">
-            Before there were highway sprints, independent apartments, or crowded coastal cafes, there was simply <em>Chota Babu</em>—the girl from Indore with the big, soulful eyes that could tell an entire story before she ever said a single word.
-          </p>
-          <p class="prose-para">
-            Those eyes carry warmth when she laughs, stubborn defiance when she’s annoyed, boundless tenderness when she cares, and a quiet stillness she rarely shows the world. People spend years trying to craft a presence; Sanjali simply looks at you, and the room feels grounded.
-          </p>
-          <blockquote class="editorial-quote">
-            “Some things never change. From the earliest childhood snapshot to tonight in Indore, the gaze remains completely her own.”
-          </blockquote>
-        </div>
-
-        <div class="media-column">
           <div class="image-diptych">
             <div class="image-slot" data-slot-id="eyes-childhood">
               <div class="placeholder-box">
                 <span class="slot-badge">PHOTO 01: CHILDHOOD</span>
-                <p class="slot-desc">Childhood photo of Sanjali showing those iconic, expressive eyes.</p>
+                <p class="slot-desc">Childhood photo of Sanjali showing those iconic pretty eyes.</p>
                 <span class="slot-action">+ Assign eyes-childhood</span>
               </div>
             </div>
             <div class="image-slot" data-slot-id="eyes-recent">
               <div class="placeholder-box">
                 <span class="slot-badge">PHOTO 02: RECENT PORTRAIT</span>
-                <p class="slot-desc">Recent candid portrait where her eyes and natural expression are the center.</p>
+                <p class="slot-desc">Recent candid portrait focusing on her eyes and natural aura.</p>
                 <span class="slot-action">+ Assign eyes-recent</span>
               </div>
             </div>
           </div>
-          <div class="caption-handwritten">Still the same.</div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ACT 02: THE LEAP -->
-    <section class="act-section" id="act-2">
-      <div class="act-header">
-        <span class="act-num">ACT 02</span>
-        <h2 class="act-title">The Leap</h2>
-        <span class="act-time">CHENNAI & PUNE // COURAGE IN MOTION</span>
-      </div>
-
-      <div class="act-single-hero">
-        <div class="image-slot wide-hero" data-slot-id="leap-hero">
-          <div class="placeholder-box">
-            <span class="slot-badge">HERO: TRADITIONAL DAY (YELLOW KURTA)</span>
-            <p class="slot-desc">Sanjali in the bright yellow kurta on stage, singing 'Lag Ja Gale'. Absolute showstopper.</p>
-            <span class="slot-action">+ Assign leap-hero</span>
+          <div class="stanza-block">
+            <p>bachpan se he same eyes h yrr</p>
+            <p>kux bolti ni tbhi sb smjh ata h inme</p>
+            <p>u carry a gud aura along with those looks thou😉</p>
           </div>
+          <div class="caption-handwritten">still the exact same chotu.</div>
         </div>
-        <div class="caption-handwritten">Lag ja gale ke phir ye haseen raat ho na ho...</div>
-      </div>
+      </article>
 
-      <div class="act-grid" style="margin-top: 3.5rem;">
-        <div class="text-column">
-          <p class="prose-para">
-            She battles quiet underconfidence. She will tell you she gets nervous, that she doubts herself, that she lacks public speaking courage. But if you pay close attention to her life, a different pattern emerges: <strong>she gets scared, and then she does it anyway.</strong>
-          </p>
-          <p class="prose-para">
-            She left the familiar streets of Indore for Chennai, pivoting from mechanical engineering into the unknown world of IT. On day one, she walked straight up and offered a firm, confident handshake. On Traditional Day, hands slightly trembling, she took the microphone in a radiant yellow kurta and sang <em>Lag Ja Gale</em> so breathtakingly that the entire auditorium went quiet.
-          </p>
-          <p class="prose-para">
-            When a rented scooty arrived, she took the handlebars in a cute pink helmet and navigated Chennai traffic with laughter. When a Royal Enfield Bullet was parked in Pune, she climbed on, learned the clutch, and felt the exhilarating rush of riding a motorcycle herself. Courage was never the absence of fear—it was Sanjali doing it regardless.
-          </p>
-        </div>
+      <!-- PAGE 2: THE LEAP -->
+      <article class="book-page" data-page="2" id="page-2">
+        <div class="page-inner">
+          <div class="page-header">
+            <span class="page-num">PAGE 02</span>
+            <h2 class="page-heading">The Leap</h2>
+            <span class="page-location">CHENNAI & PUNE // SCARED THOU STILL BRAVE</span>
+          </div>
 
-        <div class="media-column">
+          <div class="image-slot hero-wide" data-slot-id="leap-hero">
+            <div class="placeholder-box">
+              <span class="slot-badge">HERO: YELLOW KURTA / LAG JA GALE</span>
+              <p class="slot-desc">Traditional Day singing 'Lag Ja Gale' on stage. Showstopper.</p>
+              <span class="slot-action">+ Assign leap-hero</span>
+            </div>
+          </div>
+
+          <div class="stanza-block">
+            <p>nervous thi yellow kurta phn k</p>
+            <p>pr stage p gaate time pura room quiet krdia</p>
+            <p>ur voiceee yrrr sanjali sweetest</p>
+          </div>
+
           <div class="image-diptych">
             <div class="image-slot" data-slot-id="leap-helmet">
               <div class="placeholder-box">
-                <span class="slot-badge">PHOTO 03: THE PINK HELMET</span>
-                <p class="slot-desc">Driving the scooty through Chennai in her cute pink helmet.</p>
+                <span class="slot-badge">PHOTO 03: PINK HELMET</span>
+                <p class="slot-desc">Driving the scooty in Chennai in her pink helmet.</p>
                 <span class="slot-action">+ Assign leap-helmet</span>
               </div>
             </div>
             <div class="image-slot" data-slot-id="leap-bike">
               <div class="placeholder-box">
-                <span class="slot-badge">PHOTO 04: LEARNING TO RIDE</span>
-                <p class="slot-desc">Learning to balance and ride a motorcycle in Pune / on the Bullet.</p>
+                <span class="slot-badge">PHOTO 04: LEARNING BIKE</span>
+                <p class="slot-desc">Learning to balance and ride bike in Pune.</p>
                 <span class="slot-action">+ Assign leap-bike</span>
               </div>
             </div>
           </div>
-          <div class="caption-handwritten">Scared. And then brave anyway.</div>
+
+          <div class="caption-handwritten">pink helmet se direct motorcycle clutch tk.</div>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <!-- ACT 03: THE PALATE -->
-    <section class="act-section" id="act-3">
-      <div class="act-header">
-        <span class="act-num">ACT 03</span>
-        <h2 class="act-title">The Palate</h2>
-        <span class="act-time">INDORE • CHENNAI • MUMBAI • THANE // FLAVOR TRAILS</span>
-      </div>
+      <!-- PAGE 3: THE PALATE -->
+      <article class="book-page" data-page="3" id="page-3">
+        <div class="page-inner">
+          <div class="page-header">
+            <span class="page-num">PAGE 03</span>
+            <h2 class="page-heading">The Palate</h2>
+            <span class="page-location">FLAVOR MAP // INDORE TO KADAK BREWPUB</span>
+          </div>
 
-      <div class="act-grid reverse">
-        <div class="media-column">
-          <div class="image-triptych">
-            <div class="image-slot tall" data-slot-id="palate-beer">
+          <div class="image-tri-row">
+            <div class="image-slot" data-slot-id="palate-beer">
               <div class="placeholder-box">
-                <span class="slot-badge">PHOTO 05: MANGO CRAFT BEER</span>
-                <p class="slot-desc">Aug 4 craft brewery night / Kadak Brewpub with chilled mango beer.</p>
+                <span class="slot-badge">PHOTO 05: MANGO BEER</span>
+                <p class="slot-desc">First craft beer / Kadak Brewpub mango beer.</p>
                 <span class="slot-action">+ Assign palate-beer</span>
               </div>
             </div>
-            <div class="triptych-subgroup">
-              <div class="image-slot" data-slot-id="palate-noodles">
-                <div class="placeholder-box">
-                  <span class="slot-badge">PHOTO 06: NOODLE THERAPY</span>
-                  <p class="slot-desc">Candid over ramen, steaming pho, or sushi escape.</p>
-                  <span class="slot-action">+ Assign palate-noodles</span>
-                </div>
+            <div class="image-slot" data-slot-id="palate-noodles">
+              <div class="placeholder-box">
+                <span class="slot-badge">PHOTO 06: NOODLE THERAPY</span>
+                <p class="slot-desc">Ramen, pho, spaghetti or sushi run.</p>
+                <span class="slot-action">+ Assign palate-noodles</span>
               </div>
-              <div class="image-slot" data-slot-id="palate-sweets">
-                <div class="placeholder-box">
-                  <span class="slot-badge">PHOTO 07: SWEETS & CHAAT</span>
-                  <p class="slot-desc">Prashant Corner mithai boxes, ₹45 chaat, or Kopar Khairane Chinese.</p>
-                  <span class="slot-action">+ Assign palate-sweets</span>
-                </div>
+            </div>
+            <div class="image-slot" data-slot-id="palate-sweets">
+              <div class="placeholder-box">
+                <span class="slot-badge">PHOTO 07: PRASHANT CORNER</span>
+                <p class="slot-desc">Sweets, 45rs chaat, or 2AM Chinese.</p>
+                <span class="slot-action">+ Assign palate-sweets</span>
               </div>
             </div>
           </div>
-          <div class="caption-handwritten">Mango beer forever.</div>
-        </div>
 
-        <div class="text-column">
-          <p class="prose-para">
-            Food has always been her compass. Indori poha and authentic sweets are the bedrock of her soul—flavors she measures the rest of India against.
-          </p>
-          <p class="prose-para">
-            In Chennai, survival meant trading the daily ₹45 meal voucher for <em>dahi puri</em>, <em>sev puri</em>, and <em>samosa chaat</em> just to feel a whisper of North Indian comfort. It meant the classic McVeggie at McDonald’s, ordering daily deliveries from EatClub when campus food failed, and hunting down paneer parathas at Golden Cafe.
-          </p>
-          <p class="prose-para">
-            Later, when corporate anxiety and the cold pressure of the "CTC world" crept in, she turned food into medicine: winding weekend trails for steaming ramen, slurping rich pho broth, comforting bowls of spaghetti, and fresh sushi. 
-          </p>
-          <p class="prose-para">
-            And then came August 4th: her very first craft beer, unlocking a lifelong obsession with <strong>Mango Craft Beer</strong>. From Kadak Brewpub to Pop Tate's, from sweets at Prashant Corner in Thane to 2 AM roadside Chinese in Kopar Khairane and Kepchaki momos—every city she touched, she mapped in flavor.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ACT 04: THE WARDROBE -->
-    <section class="act-section" id="act-4">
-      <div class="act-header">
-        <span class="act-num">ACT 04</span>
-        <h2 class="act-title">The Wardrobe</h2>
-        <span class="act-time">STYLE EVOLUTION // PHOENIX TO MARINE DRIVE</span>
-      </div>
-
-      <div class="act-single-hero">
-        <div class="image-slot wide-hero" data-slot-id="wardrobe-hero">
-          <div class="placeholder-box">
-            <span class="slot-badge">HERO: THE OCTOBER RUNWAY</span>
-            <p class="slot-desc">Sanjali strutting down Marine Drive or Bandra looking drop-dead gorgeous like an influencer.</p>
-            <span class="slot-action">+ Assign wardrobe-hero</span>
+          <div class="stanza-block">
+            <p>poha toh basic h tera indori</p>
+            <p>chennai m 45 rs voucher se dahi puri nd samosa chaat</p>
+            <p>office ka stress bda toh ramen nd sushi therapy</p>
+            <p>nd 4 august ko discover kia mango beer... fr doneeee h!</p>
           </div>
+          <div class="caption-handwritten">mango craft beer forever bndi.</div>
         </div>
-        <div class="caption-handwritten">“She walks like an influencer... damn she is too pretty.”</div>
-      </div>
+      </article>
 
-      <div class="act-grid" style="margin-top: 3.5rem;">
-        <div class="text-column">
-          <p class="prose-para">
-            She possesses that rare, unteachable eye for aesthetic. She gravitates toward the warm 35mm grain and light leaks of Dazz Cam because sterile, overly sharpened phone photos bore her. She cares about texture, vibe, and analog nostalgia.
-          </p>
-          <p class="prose-para">
-            Look at her style milestones across fifteen months: shopping at Phoenix Marketcity for Pondicherry, carrying that signature cute pink bag, laughing when the turquoise nail polish bottle shattered on the floor, and ruling the beach like absolute royalty.
-          </p>
-          <p class="prose-para">
-            Stealing an oversized hoodie in Pune and pairing it with bicycles. Taking on her lifelong, nervous nail-biting habit and walking out of the salon near The Walk Mall on August 1st with elegant nail extensions and nail art—pure self-care. Dressing up in vivid colors for Office Garba. And then October: walking down Marine Drive with an effortless stride that turned every head on the promenade.
-          </p>
-        </div>
+      <!-- PAGE 4: THE WARDROBE -->
+      <article class="book-page" data-page="4" id="page-4">
+        <div class="page-inner">
+          <div class="page-header">
+            <span class="page-num">PAGE 04</span>
+            <h2 class="page-heading">The Wardrobe</h2>
+            <span class="page-location">STYLE // PHOENIX MALL TO MARINE DRIVE</span>
+          </div>
 
-        <div class="media-column">
+          <div class="image-slot hero-wide" data-slot-id="wardrobe-hero">
+            <div class="placeholder-box">
+              <span class="slot-badge">HERO: OCTOBER MARINE DRIVE RUNWAY</span>
+              <p class="slot-desc">Marine Drive walk looking like an influencer.</p>
+              <span class="slot-action">+ Assign wardrobe-hero</span>
+            </div>
+          </div>
+
           <div class="image-tri-row">
             <div class="image-slot" data-slot-id="wardrobe-pondi">
               <div class="placeholder-box">
                 <span class="slot-badge">PHOTO 08: PONDI SLAY</span>
-                <p class="slot-desc">Pondicherry beach look, sunrise, pink bag, sandals.</p>
+                <p class="slot-desc">Pondicherry beach fit, pink bag, sunrise.</p>
                 <span class="slot-action">+ Assign wardrobe-pondi</span>
               </div>
             </div>
             <div class="image-slot" data-slot-id="wardrobe-nails">
               <div class="placeholder-box">
-                <span class="slot-badge">PHOTO 09: AUG 1 NAIL ART</span>
+                <span class="slot-badge">PHOTO 09: 1 AUG NAIL ART</span>
                 <p class="slot-desc">Hands transformed near The Walk Mall in Thane.</p>
                 <span class="slot-action">+ Assign wardrobe-nails</span>
               </div>
             </div>
             <div class="image-slot" data-slot-id="wardrobe-garba">
               <div class="placeholder-box">
-                <span class="slot-badge">PHOTO 10: GARBA / FESTIVE</span>
-                <p class="slot-desc">Office Garba outfit, festive colors, radiant smile.</p>
+                <span class="slot-badge">PHOTO 10: GARBA FIT</span>
+                <p class="slot-desc">Office Garba traditional fit.</p>
                 <span class="slot-action">+ Assign wardrobe-garba</span>
               </div>
             </div>
           </div>
-          <div class="caption-handwritten">Too pretty, man.</div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ACT 05: THE HEARTBEAT (JUJU) -->
-    <section class="act-section sacred" id="act-5">
-      <div class="act-header">
-        <span class="act-num">ACT 05</span>
-        <h2 class="act-title">The Heartbeat</h2>
-        <span class="act-time">LONAVALA // THE FIERCE CAPACITY TO LOVE</span>
-      </div>
-
-      <div class="act-single-hero">
-        <div class="image-slot polaroid-featured" data-slot-id="heartbeat-juju">
-          <div class="placeholder-box">
-            <span class="slot-badge">SACRED POLAROID: BABY JUJU</span>
-            <p class="slot-desc">Kitten Juju looking sweet, curled up on the Lonavala villa road trip, or pampered at home.</p>
-            <span class="slot-action">+ Assign heartbeat-juju</span>
+          <div class="stanza-block">
+            <p>pondi m pink bag ke sth slaying as always</p>
+            <p>1 aug ko finally convinced uh for nail art... nail biting gone!</p>
+            <p>nd marine road p walks like an influencer... damn she is too pretty man</p>
           </div>
+          <div class="caption-handwritten">influencer walk thi bro fr.</div>
         </div>
-        <div class="caption-handwritten">Forever in the villa. Forever on the wallpaper.</div>
-      </div>
+      </article>
 
-      <div class="act-prose-centered">
-        <p class="prose-para">
-          She used to insist that she wasn’t an “animal person.” And then, on a busy road in early June, she saw a tiny, defenseless stray kitten alone on the asphalt. Without a second thought, she scooped her up, brought her home, bottle-fed her, named her <strong>Juju</strong>, and loved her with the fierce, protective devotion of a mother.
-        </p>
-        <p class="prose-para">
-          Juju wasn’t just a rescued kitten—she was royalty. Swaddled into bags for a private villa road trip in the misty hills of Lonavala, ruling the couches, pampered by everyone.
-        </p>
-        <p class="prose-para">
-          When little Juju was taken away too soon, Sanjali laid her to rest with her own bare hands. That wallpaper on her phone is not a monument to sorrow; it is proof of something sacred about Sanjali’s heart. When she loves, she loves with every single fiber. Completely, bravely, and without condition.
-        </p>
-      </div>
-    </section>
+      <!-- PAGE 5: THE HEARTBEAT (JUJU) -->
+      <article class="book-page sacred-page" data-page="5" id="page-5">
+        <div class="page-inner">
+          <div class="page-header">
+            <span class="page-num">PAGE 05</span>
+            <h2 class="page-heading">The Heartbeat</h2>
+            <span class="page-location">LONAVALA // BABY JUJU</span>
+          </div>
 
-    <!-- ACT 06: THE SISTERHOOD -->
-    <section class="act-section" id="act-6">
-      <div class="act-header">
-        <span class="act-num">ACT 06</span>
-        <h2 class="act-title">The Sisterhood</h2>
-        <span class="act-time">CHUNNA & MANSI // THE CIRCLE THAT HOLDS</span>
-      </div>
+          <div class="image-slot polaroid-card" data-slot-id="heartbeat-juju">
+            <div class="placeholder-box">
+              <span class="slot-badge">SACRED POLAROID: BABY JUJU</span>
+              <p class="slot-desc">Kitten Juju looking sweet, curled up on the Lonavala trip, or at home.</p>
+              <span class="slot-action">+ Assign heartbeat-juju</span>
+            </div>
+          </div>
 
-      <div class="act-grid">
-        <div class="text-column">
-          <p class="prose-para">
-            In July 2025, the house in Indore felt hollow. Chunna had moved across the world to the US for her Master’s, and Mansi had packed her life for an MBA. It felt like her anchors had been scattered to the wind.
-          </p>
-          <p class="prose-para">
-            And then came December: Chunna flew home after an entire year, Mansi arrived, and the three of them were tearing up the go-karting tracks in Indore, laughing so hard the previous months of silence vanished into thin air.
-          </p>
-          <p class="prose-para">
-            In January, Mansi was in Mumbai—pre-gaming at Sanjali's flat, cracking up at Raunak's standup show, catching sunsets at Juhu Beach. In May, Mansi was in Pune—midnight scooty sprints through Viman Nagar, the girls ganging up to roast, playfully fighting over who gets to hold Sanjali's hand and sandwiching her right in the middle like a queen.
-          </p>
-          <p class="prose-para">
-            Even across oceans, Sanjali watches over Chunna like a guardian—refusing to let her sister compromise or settle for anything less than she deserves. These women are not just her people; they are the architecture of her strength.
-          </p>
+          <div class="stanza-block text-center">
+            <p>khti thi i dont like animals kux khas</p>
+            <p>fr road se tiny kitten utha k lonavala villa tk le gyi like a kid</p>
+            <p>wallpaper p aaj bhi h</p>
+            <p>kuki sanjalu jisko apna maanti h na... dil se maanti h</p>
+          </div>
+          <div class="caption-handwritten">forever in the villa. forever on the wallpaper.</div>
         </div>
+      </article>
 
-        <div class="media-column">
+      <!-- PAGE 6: THE SISTERHOOD -->
+      <article class="book-page" data-page="6" id="page-6">
+        <div class="page-inner">
+          <div class="page-header">
+            <span class="page-num">PAGE 06</span>
+            <h2 class="page-heading">The Sisterhood</h2>
+            <span class="page-location">CHUNNA & MANSI // THE SAFE CIRCLE</span>
+          </div>
+
           <div class="image-diptych">
             <div class="image-slot" data-slot-id="sister-chunna">
               <div class="placeholder-box">
                 <span class="slot-badge">PHOTO 11: WITH CHUNNA</span>
-                <p class="slot-desc">Go-karting in Indore, reunion at home, or sweet sister snapshot.</p>
+                <p class="slot-desc">Go-karting in Indore, reunion after 1 yr.</p>
                 <span class="slot-action">+ Assign sister-chunna</span>
               </div>
             </div>
             <div class="image-slot" data-slot-id="sister-mansi">
               <div class="placeholder-box">
                 <span class="slot-badge">PHOTO 12: WITH MANSI</span>
-                <p class="slot-desc">Mumbai flat, Raunak comedy show, Juhu, or Viman Nagar laughs.</p>
+                <p class="slot-desc">Mumbai flat drinks, Raunak comedy show, Viman Nagar.</p>
                 <span class="slot-action">+ Assign sister-mansi</span>
               </div>
             </div>
           </div>
-          <div class="caption-handwritten">The architecture of resilience.</div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ACT 07: THE CITIES -->
-    <section class="act-section" id="act-7">
-      <div class="act-header">
-        <span class="act-num">ACT 07</span>
-        <h2 class="act-title">The Cities</h2>
-        <span class="act-time">A GEOGRAPHIC FOOTPRINT // 2025 – 2026</span>
-      </div>
-
-      <p class="section-intro-text">Every city she entered, she carved out her own orbit.</p>
-
-      <div class="cities-strip">
-        <!-- City 1 -->
-        <div class="city-card">
-          <div class="city-header">
-            <h3>INDORE</h3>
-            <span class="city-tagline">The roots. The poha. The eyes.</span>
+          <div class="stanza-block">
+            <p>july m chunna US gyi nd mansi mba... ghr kafi empty tha</p>
+            <p>december m dono aye fr indore m gokarting scenes</p>
+            <p>mansi k sth flat p drinks nd standup... viman nagar scooty sprints</p>
+            <p>dono milke meko roast krti thi pr teko beech m bitha k pamper b krti thi</p>
           </div>
-          <div class="image-slot city-slot" data-slot-id="city-indore">
-            <div class="placeholder-box">
-              <span class="slot-badge">INDORE ARCHIVE</span>
-              <p class="slot-desc">Childhood, family home, Holi, or Indore comfort.</p>
-              <span class="slot-action">+ Assign city-indore</span>
+          <div class="caption-handwritten">chotu, chunna, mansi... unshakeable.</div>
+        </div>
+      </article>
+
+      <!-- PAGE 7: THE CITIES -->
+      <article class="book-page" data-page="7" id="page-7">
+        <div class="page-inner">
+          <div class="page-header">
+            <span class="page-num">PAGE 07</span>
+            <h2 class="page-heading">The Cities</h2>
+            <span class="page-location">EVERYWHERE LIFE TOOK US</span>
+          </div>
+
+          <div class="city-mini-grid">
+            <div class="city-mini-card">
+              <h4>INDORE</h4>
+              <span>poha roots, gokarting, ghr</span>
+              <div class="image-slot mini-slot" data-slot-id="city-indore">
+                <div class="placeholder-box"><span class="slot-action">+ indore</span></div>
+              </div>
+            </div>
+            <div class="city-mini-card">
+              <h4>CHENNAI</h4>
+              <span>45rs voucher, scooty, lag ja gale</span>
+              <div class="image-slot mini-slot" data-slot-id="city-chennai">
+                <div class="placeholder-box"><span class="slot-action">+ chennai</span></div>
+              </div>
+            </div>
+            <div class="city-mini-card">
+              <h4>PONDI</h4>
+              <span>beach sunrise, turquoise nail paint</span>
+              <div class="image-slot mini-slot" data-slot-id="city-pondi">
+                <div class="placeholder-box"><span class="slot-action">+ pondi</span></div>
+              </div>
+            </div>
+            <div class="city-mini-card">
+              <h4>MUMBAI</h4>
+              <span>marine drive, rhb karaoke, prithvi</span>
+              <div class="image-slot mini-slot" data-slot-id="city-mumbai">
+                <div class="placeholder-box"><span class="slot-action">+ mumbai</span></div>
+              </div>
+            </div>
+            <div class="city-mini-card">
+              <h4>PUNE</h4>
+              <span>bullet ride, pool swings, mela</span>
+              <div class="image-slot mini-slot" data-slot-id="city-pune">
+                <div class="placeholder-box"><span class="slot-action">+ pune</span></div>
+              </div>
+            </div>
+            <div class="city-mini-card">
+              <h4>THANE</h4>
+              <span>riccis, prashant corner, nail salon</span>
+              <div class="image-slot mini-slot" data-slot-id="city-thane">
+                <div class="placeholder-box"><span class="slot-action">+ thane</span></div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- City 2 -->
-        <div class="city-card">
-          <div class="city-header">
-            <h3>CHENNAI</h3>
-            <span class="city-tagline">₹45 chaat, pink helmets, and a voice that stopped the room.</span>
+          <div class="stanza-block">
+            <p>from pune to mumbai and everywhere life took us...</p>
+            <p>har city m apna orbit bna lia h chotu ne</p>
           </div>
-          <div class="image-slot city-slot" data-slot-id="city-chennai">
+          <div class="caption-handwritten">life takes us placess sanjali hehee.</div>
+        </div>
+      </article>
+
+      <!-- PAGE 8: THE QUIET STRENGTH -->
+      <article class="book-page" data-page="8" id="page-8">
+        <div class="page-inner">
+          <div class="page-header">
+            <span class="page-num">PAGE 08</span>
+            <h2 class="page-heading">The Quiet Strength</h2>
+            <span class="page-location">LOAD NI LIA KR</span>
+          </div>
+
+          <div class="image-slot hero-portrait" data-slot-id="strength-portrait">
             <div class="placeholder-box">
-              <span class="slot-badge">CHENNAI HORIZON</span>
-              <p class="slot-desc">Campus life, A2B, scooty rides, or stage.</p>
-              <span class="slot-action">+ Assign city-chennai</span>
+              <span class="slot-badge">PORTRAIT: QUIET STRENGTH</span>
+              <p class="slot-desc">A calm, contemplative candid portrait in stillness.</p>
+              <span class="slot-action">+ Assign strength-portrait</span>
             </div>
           </div>
-        </div>
 
-        <!-- City 3 -->
-        <div class="city-card">
-          <div class="city-header">
-            <h3>PONDICHERRY</h3>
-            <span class="city-tagline">Sunrise on the rocks. Turquoise nails. Princess energy.</span>
+          <div class="stanza-block">
+            <p>ik bht bhag-daud nd stress chl rha tha ye saal</p>
+            <p>ctc rat race, family duty ujjain m, nani, mumma ko support krna</p>
+            <p>roommate ka mess b bravely handle kia</p>
+            <p>seriously... load ni lia kr inna</p>
+            <p>bdhia bndi h tuuuu, sb sort kr leti h dw</p>
           </div>
-          <div class="image-slot city-slot" data-slot-id="city-pondi">
+          <div class="caption-handwritten">ill hold, she wont hit the bottom.</div>
+        </div>
+      </article>
+
+      <!-- PAGE 9: THE UNFINISHED SONG -->
+      <article class="book-page" data-page="9" id="page-9">
+        <div class="page-inner">
+          <div class="page-header">
+            <span class="page-num">PAGE 09</span>
+            <h2 class="page-heading">The Unfinished Song</h2>
+            <span class="page-location">HER VOICE // UNPAUSE IT</span>
+          </div>
+
+          <div class="image-slot hero-portrait" data-slot-id="song-stage">
             <div class="placeholder-box">
-              <span class="slot-badge">PONDICHERRY COAST</span>
-              <p class="slot-desc">Beach sunrise, French quarter, pink bag.</p>
-              <span class="slot-action">+ Assign city-pondi</span>
+              <span class="slot-badge">SINGING / KARAOKE / RHB</span>
+              <p class="slot-desc">Traditional Day singing, Bandra karaoke RHB, or candid singing.</p>
+              <span class="slot-action">+ Assign song-stage</span>
             </div>
           </div>
+
+          <div class="stanza-block text-center">
+            <p>feb m singing page start kia tha</p>
+            <p>fr april m doubt k chkr m pause krdia</p>
+            <p>ur voiceee yrrr sanjali sweetest... genuinely bol ra</p>
+            <p class="unpause-callout">unpause krde usko!</p>
+          </div>
+          <div class="caption-handwritten">no cap, world needs to hear uh sing again.</div>
         </div>
+      </article>
 
-        <!-- City 4 -->
-        <div class="city-card">
-          <div class="city-header">
-            <h3>MUMBAI</h3>
-            <span class="city-tagline">Marine Drive. Bandra karaoke. The city she made hers.</span>
+      <!-- PAGE 10: THE INDEPENDENCE -->
+      <article class="book-page" data-page="10" id="page-10">
+        <div class="page-inner">
+          <div class="page-header">
+            <span class="page-num">PAGE 10</span>
+            <h2 class="page-heading">The Independence</h2>
+            <span class="page-location">CASA RIO & PRODUCT MANAGER VIBES</span>
           </div>
-          <div class="image-slot city-slot" data-slot-id="city-mumbai">
-            <div class="placeholder-box">
-              <span class="slot-badge">MUMBAI RUNWAY</span>
-              <p class="slot-desc">Marine Drive, Bandstand, Prithvi Cafe, Colaba.</p>
-              <span class="slot-action">+ Assign city-mumbai</span>
-            </div>
-          </div>
-        </div>
 
-        <!-- City 5 -->
-        <div class="city-card">
-          <div class="city-header">
-            <h3>PUNE</h3>
-            <span class="city-tagline">Bullet rides. Bowling alleys. Swings by the pool.</span>
-          </div>
-          <div class="image-slot city-slot" data-slot-id="city-pune">
-            <div class="placeholder-box">
-              <span class="slot-badge">PUNE CIRCUIT</span>
-              <p class="slot-desc">FC Road, Viman Nagar, swimming pool, snooker.</p>
-              <span class="slot-action">+ Assign city-pune</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- City 6 -->
-        <div class="city-card">
-          <div class="city-header">
-            <h3>LONAVALA</h3>
-            <span class="city-tagline">Misty hills. Villa nights. Juju on the passenger seat.</span>
-          </div>
-          <div class="image-slot city-slot" data-slot-id="city-lonavala">
-            <div class="placeholder-box">
-              <span class="slot-badge">LONAVALA VILLA</span>
-              <p class="slot-desc">Western Ghats mist, pool party, villa escape.</p>
-              <span class="slot-action">+ Assign city-lonavala</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- City 7 -->
-        <div class="city-card">
-          <div class="city-header">
-            <h3>THANE</h3>
-            <span class="city-tagline">The hidden oasis. Ricci's. Prashant Corner. Nail art.</span>
-          </div>
-          <div class="image-slot city-slot" data-slot-id="city-thane">
-            <div class="placeholder-box">
-              <span class="slot-badge">THANE GETAWAY</span>
-              <p class="slot-desc">The Walk Mall, Ricci's Cafe, Prashant Corner.</p>
-              <span class="slot-action">+ Assign city-thane</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ACT 08: THE QUIET STRENGTH -->
-    <section class="act-section" id="act-8">
-      <div class="act-header">
-        <span class="act-num">ACT 08</span>
-        <h2 class="act-title">The Quiet Strength</h2>
-        <span class="act-time">HONORING WHAT SHE CARRIED // 2025 – 2026</span>
-      </div>
-
-      <div class="act-single-hero" style="max-width: 720px;">
-        <div class="image-slot" data-slot-id="strength-portrait" style="aspect-ratio: 16/9;">
-          <div class="placeholder-box">
-            <span class="slot-badge">OPTIONAL: QUIET PORTRAIT</span>
-            <p class="slot-desc">Contemplative, candid portrait in stillness (by a window, sunset, quiet moment).</p>
-            <span class="slot-action">+ Assign strength-portrait</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="act-prose-centered" style="margin-top: 3.5rem;">
-        <p class="prose-para">
-          This year demanded a great deal from her. She stepped out into the world alone at twenty-three. She absorbed the corporate pressures and salary expectations of the "CTC world" while still finding her footing as an independent woman.
-        </p>
-        <p class="prose-para">
-          When her mother fell ill in Chennai, she rushed to Indore. When her Nani fought terminal cancer, she traveled to Ujjain to hold her mother's hand. When her Nani passed on September 3rd, she stayed in Mumbai and kept reporting to work because that was her duty—bearing quiet sorrow for her grieving family while soldiering through corporate expectations.
-        </p>
-        <p class="prose-para">
-          She endured a toxic living situation with a former friend, held her dignity, and walked away with her head held high. She survived weeks of silence after losing Juju, learning to breathe through the dark.
-        </p>
-        <blockquote class="editorial-quote" style="text-align: left; max-width: 600px; margin: 2.5rem auto;">
-          “She didn’t just survive this year. She carried everyone else’s weight on her shoulders, protected her peace, and still found ways to laugh till her stomach hurt.”
-        </blockquote>
-      </div>
-    </section>
-
-    <!-- ACT 09: THE UNFINISHED SONG -->
-    <section class="act-section" id="act-9">
-      <div class="act-header" style="text-align: center;">
-        <span class="act-num">ACT 09</span>
-        <h2 class="act-title">The Unfinished Song</h2>
-        <span class="act-time">HER VOICE // WAITING TO BE UNPAUSED</span>
-      </div>
-
-      <div class="act-single-hero" style="max-width: 620px;">
-        <div class="image-slot" data-slot-id="song-stage" style="aspect-ratio: 4/5;">
-          <div class="placeholder-box">
-            <span class="slot-badge">HER VOICE: SINGING OR KARAOKE</span>
-            <p class="slot-desc">Traditional Day singing, Bandra karaoke bar (RHB), or candid humming/music moment.</p>
-            <span class="slot-action">+ Assign song-stage</span>
-          </div>
-        </div>
-        <div class="caption-handwritten">Your voice is too beautiful to keep to yourself.</div>
-      </div>
-
-      <div class="act-prose-centered">
-        <p class="prose-para">
-          In that yellow kurta in Chennai, she opened her mouth to sing <em>Lag Ja Gale</em>, and the entire hall stopped breathing. There is something delicate, textured, and deeply emotive about her voice—it doesn’t perform; it speaks directly to the soul.
-        </p>
-        <p class="prose-para">
-          In late February 2026, she took a brave step and launched her own singing page to share her gift. By late April, the relentless noise of corporate life and quiet imposter syndrome crept in, and she paused it.
-        </p>
-        <p class="prose-para">
-          Songs don’t disappear simply because you stop singing them. That artist inside her is still there, waiting for the corporate static to clear. This is a gentle, loving reminder on your birthday:
-        </p>
-        <p class="prose-para" style="font-family: var(--font-serif); font-size: 2rem; color: var(--accent-terracotta); margin-top: 1.5rem; letter-spacing: 0.05em;">
-          Unpause it.
-        </p>
-      </div>
-    </section>
-
-    <!-- ACT 10: THE INDEPENDENCE -->
-    <section class="act-section" id="act-10">
-      <div class="act-header">
-        <span class="act-num">ACT 10</span>
-        <h2 class="act-title">The Independence</h2>
-        <span class="act-time">CASA RIO // BUILDING HER FUTURE</span>
-      </div>
-
-      <div class="act-grid reverse">
-        <div class="media-column">
           <div class="image-diptych">
             <div class="image-slot" data-slot-id="independence-home">
               <div class="placeholder-box">
-                <span class="slot-badge">PHOTO 13: CASA RIO VICTORY</span>
-                <p class="slot-desc">Keys to the new flat, settling in, or Casa Rio view.</p>
+                <span class="slot-badge">PHOTO 13: CASA RIO KEYS</span>
+                <p class="slot-desc">Casa Rio new flat victory, keys, settling in.</p>
                 <span class="slot-action">+ Assign independence-home</span>
               </div>
             </div>
             <div class="image-slot" data-slot-id="independence-city">
               <div class="placeholder-box">
-                <span class="slot-badge">PHOTO 14: THE NEIGHBORHOOD</span>
-                <p class="slot-desc">Kadak Brewpub, Khidkaleshwar Mandir, or Lodha Mall.</p>
+                <span class="slot-badge">PHOTO 14: NEIGHBORHOOD</span>
+                <p class="slot-desc">Kadak Brewpub, Khidkaleshwar Mandir, Lodha Mall.</p>
                 <span class="slot-action">+ Assign independence-city</span>
               </div>
             </div>
           </div>
-          <div class="caption-handwritten">The city belongs to you.</div>
+
+          <div class="stanza-block">
+            <p>mech se IT... nd ab product manager k lie prep</p>
+            <p>flathunt kia akeli ne nd casa rio final krlia</p>
+            <p>khidkaleshwar mandir se seedha kadak brewpub</p>
+            <p>u re building ur own life chotu, exactly on ur terms</p>
+          </div>
+          <div class="caption-handwritten">the city belongs to uh now.</div>
         </div>
+      </article>
 
-        <div class="text-column">
-          <p class="prose-para">
-            From mechanical engineering to IT support, and now setting her sights on conquering the <strong>Product Manager</strong> world—she is sharpening her intellect, studying, and taking the helm of her own professional destiny.
-          </p>
-          <p class="prose-para">
-            She scouted apartments across Mumbai, took charge, and finalized her fresh start at <strong>Casa Rio</strong>. She built a neighborhood rhythm that belongs only to her: stepping out of Everest Dynamic Crest, peaceful morning walks by Khidkaleshwar Mandir, and strolls to Lodha Mall for pints of mango craft beer at Kadak Brewpub.
-          </p>
-          <p class="prose-para">
-            By October, she was touring the veins of Mumbai on scooty, singing tipsy karaoke in Bandra at RHB, feeling the sea mist on the rocks at Bandstand, eating 2 AM roadside Chinese in Kopar Khairane, feasting on Kepchaki momos, and walking through Prithvi Cafe like royalty.
-          </p>
-          <p class="prose-para">
-            She is not waiting for permission. She is building her life, brick by brick, entirely on her own terms.
-          </p>
-        </div>
-      </div>
-    </section>
+      <!-- PAGE 11: THE LETTER -->
+      <article class="book-page letter-page" data-page="11" id="page-11">
+        <div class="page-inner">
+          <div class="letter-card">
+            <span class="letter-tag">A NOTE FROM MAYA</span>
+            <h3 class="letter-title">Sanjalu,</h3>
 
-    <!-- ACT 11: THE LETTER -->
-    <section class="act-section epilogue-section" id="act-11">
-      <div class="act-header" style="text-align: center;">
-        <span class="act-num">ACT 11</span>
-        <h2 class="act-title">To Sanjali, On Your Birthday</h2>
-        <span class="act-time">NOVEMBER 3, 2026 // FROM THE EYEWITNESS</span>
-      </div>
+            <div class="stanza-block letter-stanza">
+              <p>happyyy birthday happy birthday to u sanjalii 🥰🥰🥰😘</p>
+              <p>not a big note person thouu so pardon any faults</p>
+              <p>but will tryy</p>
+            </div>
 
-      <div class="letter-container">
-        <div class="letter-body">
-          <p class="letter-salutation">Dear Sanjalu,</p>
-          <p class="letter-text">
-            If you look back across the last fifteen months, you might see exhausting commutes, long local trains, corporate tests, moving boxes, and moments where your heart felt too heavy to carry alone.
-          </p>
-          <p class="letter-text">
-            But from where I was standing, this is what I saw:
-          </p>
-          <ul class="letter-bullets">
-            <li>I saw a girl who landed alone in Chennai with quiet anxiety, and stepped onto a stage in a yellow kurta to sing <em>Lag Ja Gale</em> like an absolute dream.</li>
-            <li>I saw a girl who learned to ride motorcycles, conquered swimming pools, and dominated badminton courts without breaking a sweat.</li>
-            <li>I saw a girl who scooped up a helpless kitten from the roadside, gave her a queen’s love in Lonavala, and loved her with her whole soul.</li>
-            <li>I saw a girl who survived every difficult living space, fiercely protected her sister across the world, stood as an anchor for her mother, and closed her own new home in Casa Rio.</li>
-            <li>And I saw a girl who struts down Marine Drive looking so breathtaking that the entire city disappears around her.</li>
-          </ul>
-          <p class="letter-text">
-            You don't have to prove anything to the CTC rat race. You don't have to carry the weight of having every single answer figured out today. You are already an extraordinary, deeply loved, fiercely capable woman.
-          </p>
-          <p class="letter-text">
-            Happy Birthday, Chotu. I hope when you look in the mirror today in Indore, you finally see what everyone else has seen all along.
-          </p>
-          <p class="letter-signoff">
-            Always in your corner,<br>
-            <span class="signoff-handwritten">Mayank</span>
-          </p>
-        </div>
+            <div class="stanza-block letter-stanza">
+              <p>thnkew for makin my boriin life fun</p>
+              <p>pune to mumbai, scooty rides, bowling, pool, kadak beer</p>
+              <p>u carry a gud aura along with those looks thou😉</p>
+            </div>
 
-        <!-- ACT 12: THE TEASER -->
-        <div class="print-teaser-card" id="act-12">
-          <div class="teaser-icon">📖</div>
-          <div class="teaser-content">
-            <h4>TO BE CONTINUED IN REAL INK</h4>
-            <p>This digital essay is only the prologue. A heavyweight, cloth-bound editorial photobook—with real blank spaces waiting for handwritten memories—is arriving in your hands.</p>
-            <span class="teaser-date">VOLUME I (PRINT) — DECEMBER 1, 2026</span>
+            <div class="stanza-block letter-stanza">
+              <p>ik thoda stress nd travel chl rha h abhi birthday p</p>
+              <p>pr seriously... load ni lia kr inna</p>
+              <p>bdhia bndi h tuuuu, bht proud hu terepe</p>
+            </div>
+
+            <div class="stanza-block letter-stanza">
+              <p>u re always gonna be mera chotu</p>
+              <p>no matter what happens or kinna bhi mess ho</p>
+              <p>juju is always right here with uh</p>
+            </div>
+
+            <div class="letter-signoff-block">
+              <p>miss uh moreee, dhyan rkh</p>
+              <span class="signoff-handwritten">Maya / Juju</span>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </article>
 
-  </main>
+      <!-- PAGE 12: THE TEASER -->
+      <article class="book-page teaser-page" data-page="12" id="page-12">
+        <div class="page-inner">
+          <div class="teaser-card-box">
+            <div class="teaser-badge">PRINT INCOMING</div>
+            <h2 class="teaser-heading">Abhi party pending h!</h2>
+            <p class="teaser-sub">ye website toh bas ek trailer tha...</p>
+            <div class="teaser-book-icon">📖</div>
+            <p class="teaser-desc">a real clothbound photobook with handwriting empty spaces arriving in ur hands when uh come back.</p>
+            <div class="teaser-date-badge">VOLUME I (PRINT) — DECEMBER 1, 2026</div>
+          </div>
+          <div class="caption-handwritten">happy birthday once again sanjaluuu 🫂</div>
+        </div>
+      </article>
 
-  <!-- EDITORIAL FOOTER -->
-  <footer class="editorial-footer">
-    <div class="footer-meta">
-      <span>CURATED & ARCHIVED 100% LOCALLY WITH LOVE</span>
-      <span>//</span>
-      <span>INDORE • CHENNAI • PONDICHERRY • MUMBAI • PUNE • THANE • LONAVALA</span>
     </div>
-    <div class="footer-sub">NOVEMBER 3, 2026 • HAPPY BIRTHDAY SANJALU</div>
-  </footer>
+  </div>
 
-  <!-- Lightbox Modal for Photo Inspection -->
+  <!-- Lightbox Modal -->
   <div class="modal" id="imageModal" role="dialog" aria-hidden="true">
-    <span class="modal-close" id="modalClose" aria-label="Close Preview">&times;</span>
+    <span class="modal-close" id="modalClose">&times;</span>
     <div class="modal-content">
       <img id="modalImg" src="" alt="Photo Preview">
       <div class="modal-caption" id="modalCaption"></div>

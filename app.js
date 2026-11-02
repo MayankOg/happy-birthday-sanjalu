@@ -1,49 +1,56 @@
 /**
- * SANJALU // EDITORIAL RETROSPECTIVE (V2)
- * Mobile Drawer, Lightbox Modal, Scroll-Triggered Fade-In, and Photo Assignment Engine
+ * SANJALU // EDITORIAL RETROSPECTIVE (BOOK PAGE-FLIP ENGINE)
+ * Interactive 3D Page Turn, Swipe Gesture Detection & Audio System
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 0. Birthday Opener Curtain & Audio Handling
+  const pages = document.querySelectorAll('.book-page');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const pageCounter = document.getElementById('pageCounter');
   const hbdCurtain = document.getElementById('hbdCurtain');
   const enterBtn = document.getElementById('enterBtn');
   const loaderBar = document.getElementById('loaderBar');
   const bgAudio = document.getElementById('bgAudio');
   const audioToggle = document.getElementById('audioToggle');
   const audioLabel = document.getElementById('audioLabel');
+  const bookStage = document.getElementById('bookStage');
 
-  let isPlaying = false;
+  let currentPage = 0;
+  const totalPages = pages.length;
+  let isAudioPlaying = false;
 
-  // Fake asset preload animation on curtain
+  // 1. Loader Animation
   if (loaderBar) {
-    let progress = 0;
+    let p = 0;
     const interval = setInterval(() => {
-      progress += Math.floor(Math.random() * 20) + 15;
-      if (progress >= 100) {
-        progress = 100;
+      p += Math.floor(Math.random() * 25) + 15;
+      if (p >= 100) {
+        p = 100;
         clearInterval(interval);
       }
-      loaderBar.style.width = `${progress}%`;
-    }, 150);
+      loaderBar.style.width = `${p}%`;
+    }, 120);
   }
 
+  // 2. Audio Control
   function startAudio() {
     if (bgAudio) {
       bgAudio.volume = 0.45;
       bgAudio.play().then(() => {
-        isPlaying = true;
+        isAudioPlaying = true;
         if (audioLabel) audioLabel.textContent = "Music: On";
       }).catch(err => {
-        console.log("Audio play blocked by browser policy:", err);
+        console.log("Audio autoplay prevented:", err);
       });
     }
   }
 
   function toggleAudio() {
     if (!bgAudio) return;
-    if (isPlaying) {
+    if (isAudioPlaying) {
       bgAudio.pause();
-      isPlaying = false;
+      isAudioPlaying = false;
       if (audioLabel) audioLabel.textContent = "Music: Off";
     } else {
       startAudio();
@@ -61,95 +68,98 @@ document.addEventListener('DOMContentLoaded', () => {
     audioToggle.addEventListener('click', toggleAudio);
   }
 
-  // 1. Navigation Drawer Toggle
-  const menuToggle = document.getElementById('menuToggle');
-  const closeDrawer = document.getElementById('closeDrawer');
-  const drawer = document.getElementById('drawer');
-  const drawerLinks = document.querySelectorAll('.drawer-link');
-
-  if (menuToggle && drawer) {
-    menuToggle.addEventListener('click', () => {
-      drawer.classList.add('active');
+  // 3. Page Flip System
+  function updatePages() {
+    pages.forEach((page, index) => {
+      page.classList.remove('active', 'flipped');
+      if (index === currentPage) {
+        page.classList.add('active');
+      } else if (index < currentPage) {
+        page.classList.add('flipped');
+      }
     });
+
+    if (pageCounter) {
+      pageCounter.textContent = `${currentPage + 1} / ${totalPages}`;
+    }
+
+    if (prevBtn) prevBtn.style.visibility = currentPage === 0 ? 'hidden' : 'visible';
+    if (nextBtn) nextBtn.style.visibility = currentPage === totalPages - 1 ? 'hidden' : 'visible';
   }
 
-  if (closeDrawer && drawer) {
-    closeDrawer.addEventListener('click', () => {
-      drawer.classList.remove('active');
-    });
+  function nextPage() {
+    if (currentPage < totalPages - 1) {
+      currentPage++;
+      updatePages();
+    }
   }
 
-  drawerLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (drawer) drawer.classList.remove('active');
-    });
+  function prevPage() {
+    if (currentPage > 0) {
+      currentPage--;
+      updatePages();
+    }
+  }
+
+  if (nextBtn) nextBtn.addEventListener('click', nextPage);
+  if (prevBtn) prevBtn.addEventListener('click', prevPage);
+
+  // Keyboard navigation (Left / Right Arrow)
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') {
+      nextPage();
+    } else if (e.key === 'ArrowLeft') {
+      prevPage();
+    }
   });
 
-  // 2. Lightbox Modal
+  // Touch Swipe Gesture for Mobile Page Turning
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  if (bookStage) {
+    bookStage.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    bookStage.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+  }
+
+  function handleSwipe() {
+    const swipeThreshold = 45;
+    if (touchStartX - touchEndX > swipeThreshold) {
+      // Swipe Left -> Next Page
+      nextPage();
+    } else if (touchEndX - touchStartX > swipeThreshold) {
+      // Swipe Right -> Prev Page
+      prevPage();
+    }
+  }
+
+  updatePages();
+
+  // 4. Modal Lightbox
   const modal = document.getElementById('imageModal');
   const modalImg = document.getElementById('modalImg');
   const modalCaption = document.getElementById('modalCaption');
   const modalClose = document.getElementById('modalClose');
 
   if (modalClose && modal) {
-    modalClose.addEventListener('click', () => {
-      modal.classList.remove('active');
-    });
-
+    modalClose.addEventListener('click', () => modal.classList.remove('active'));
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('active');
-      }
+      if (e.target === modal) modal.classList.remove('active');
     });
   }
 
-  // 3. Progressive Scroll Animation (Fade & Slide in)
-  // Injected via JS so layout remains completely visible if JS is disabled
-  const animStyle = document.createElement('style');
-  animStyle.textContent = `
-    .act-section, .act-single-hero, .act-grid, .city-card {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .anim-visible {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-    }
-  `;
-  document.head.appendChild(animStyle);
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('anim-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
-  });
-
-  document.querySelectorAll('.act-section, .act-single-hero, .act-grid, .city-card').forEach(el => {
-    observer.observe(el);
-  });
-
-  // 4. Photo Assignment Engine
-  // Map any slot ID to an image source URL or local path
-  window.photoManifest = {
-    // Example:
-    // 'cover-hero': 'assets/images/cover.jpg',
-    // 'eyes-childhood': 'assets/images/childhood.jpg',
-  };
+  // 5. Photo Assignment Engine
+  window.photoManifest = {};
 
   window.assignPhoto = function(slotId, imageSrc, captionText = '') {
     const slot = document.querySelector(`[data-slot-id="${slotId}"]`);
-    if (!slot) {
-      console.warn(`[PhotoEngine] Slot not found: ${slotId}`);
-      return;
-    }
+    if (!slot) return;
 
     slot.innerHTML = '';
     const img = document.createElement('img');
@@ -167,11 +177,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     slot.appendChild(img);
   };
-
-  // Populate any pre-loaded photos in manifest
-  if (window.photoManifest && typeof window.photoManifest === 'object') {
-    Object.keys(window.photoManifest).forEach(slotId => {
-      window.assignPhoto(slotId, window.photoManifest[slotId]);
-    });
-  }
 });
