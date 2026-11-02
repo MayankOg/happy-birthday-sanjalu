@@ -79,10 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    if (pageCounter) {
-      pageCounter.textContent = `${currentPage + 1} / ${totalPages}`;
-    }
-
     if (prevBtn) prevBtn.style.visibility = currentPage === 0 ? 'hidden' : 'visible';
     if (nextBtn) nextBtn.style.visibility = currentPage === totalPages - 1 ? 'hidden' : 'visible';
   }
