@@ -177,6 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'city-lonavala': 'assets/images/city-lonavala.jpg',
     'city-thane': 'assets/images/city-thane.jpg',
     'strength-portrait': 'assets/images/strength-portrait.jpg',
+    'song-stage': 'assets/images/song-stage.jpg',
     'independence-home': 'assets/images/independence-home.jpg',
     'independence-city': 'assets/images/independence-city.jpg'
   };
