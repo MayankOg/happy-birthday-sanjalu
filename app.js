@@ -158,7 +158,27 @@ document.addEventListener('DOMContentLoaded', () => {
     'leap-hero': 'assets/images/leap-hero.jpg',
     'leap-helmet': 'assets/images/leap-helmet.jpg',
     'leap-bike': 'assets/images/leap-bike.jpg',
-    'leap-car': 'assets/images/leap-car.jpg'
+    'leap-car': 'assets/images/leap-car.jpg',
+    'palate-beer': 'assets/images/palate-beer.jpg',
+    'palate-noodles': 'assets/images/palate-noodles.jpg',
+    'palate-sweets': 'assets/images/palate-sweets.jpg',
+    'wardrobe-hero': 'assets/images/wardrobe-hero.jpg',
+    'wardrobe-pondi': 'assets/images/wardrobe-pondi.jpg',
+    'wardrobe-nails': 'assets/images/wardrobe-nails.jpg',
+    'wardrobe-garba': 'assets/images/wardrobe-garba.jpg',
+    'heartbeat-juju': 'assets/images/heartbeat-juju.jpg',
+    'sister-chunna': 'assets/images/sister-chunna.jpg',
+    'sister-mansi': 'assets/images/sister-mansi.jpg',
+    'city-indore': 'assets/images/city-indore.jpg',
+    'city-chennai': 'assets/images/city-chennai.jpg',
+    'city-pondi': 'assets/images/city-pondi.jpg',
+    'city-mumbai': 'assets/images/city-mumbai.jpg',
+    'city-pune': 'assets/images/city-pune.jpg',
+    'city-lonavala': 'assets/images/city-lonavala.jpg',
+    'city-thane': 'assets/images/city-thane.jpg',
+    'strength-portrait': 'assets/images/strength-portrait.jpg',
+    'independence-home': 'assets/images/independence-home.jpg',
+    'independence-city': 'assets/images/independence-city.jpg'
   };
 
   window.assignPhoto = function(slotId, imageSrc, captionText = '') {
