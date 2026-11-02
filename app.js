@@ -155,7 +155,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 5. Photo Assignment Engine
-  window.photoManifest = {};
+  window.photoManifest = {
+    'cover-hero': 'assets/images/cover-hero.jpg',
+    'eyes-childhood': 'assets/images/eyes-childhood.jpg',
+    'eyes-recent': 'assets/images/eyes-recent.jpg',
+    'leap-hero': 'assets/images/leap-hero.jpg',
+    'leap-helmet': 'assets/images/leap-helmet.jpg'
+  };
 
   window.assignPhoto = function(slotId, imageSrc, captionText = '') {
     const slot = document.querySelector(`[data-slot-id="${slotId}"]`);
@@ -177,4 +183,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     slot.appendChild(img);
   };
+
+  // Populate photos from manifest on load
+  if (window.photoManifest) {
+    Object.keys(window.photoManifest).forEach(slotId => {
+      window.assignPhoto(slotId, window.photoManifest[slotId]);
+    });
+  }
 });
