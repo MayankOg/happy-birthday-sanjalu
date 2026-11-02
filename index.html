@@ -11,6 +11,34 @@
 </head>
 <body>
 
+  <!-- Birthday Opener / Asset Loader Curtain -->
+  <div class="hbd-curtain" id="hbdCurtain">
+    <div class="curtain-content">
+      <div class="curtain-badge">A RETROSPECTIVE FOR</div>
+      <h1 class="curtain-name">Sanjalu</h1>
+      <p class="curtain-subtitle">Happy 24th Birthday, Chotu</p>
+      <div class="curtain-loader">
+        <div class="loader-bar" id="loaderBar"></div>
+      </div>
+      <button class="enter-btn" id="enterBtn">
+        <span>Enter Retrospective</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <span class="curtain-hint">♪ Tap to enter with music</span>
+    </div>
+  </div>
+
+  <!-- Background Audio Player -->
+  <audio id="bgAudio" loop preload="auto">
+    <source src="assets/birthday.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Floating Audio Toggle -->
+  <button class="audio-toggle" id="audioToggle" aria-label="Toggle Birthday Music">
+    <span class="audio-icon" id="audioIcon">♪</span>
+    <span class="audio-label" id="audioLabel">Music: Off</span>
+  </button>
+
   <!-- Film Grain Overlay -->
   <div class="film-grain"></div>
 

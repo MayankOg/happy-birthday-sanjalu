@@ -4,6 +4,63 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 0. Birthday Opener Curtain & Audio Handling
+  const hbdCurtain = document.getElementById('hbdCurtain');
+  const enterBtn = document.getElementById('enterBtn');
+  const loaderBar = document.getElementById('loaderBar');
+  const bgAudio = document.getElementById('bgAudio');
+  const audioToggle = document.getElementById('audioToggle');
+  const audioLabel = document.getElementById('audioLabel');
+
+  let isPlaying = false;
+
+  // Fake asset preload animation on curtain
+  if (loaderBar) {
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += Math.floor(Math.random() * 20) + 15;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(interval);
+      }
+      loaderBar.style.width = `${progress}%`;
+    }, 150);
+  }
+
+  function startAudio() {
+    if (bgAudio) {
+      bgAudio.volume = 0.45;
+      bgAudio.play().then(() => {
+        isPlaying = true;
+        if (audioLabel) audioLabel.textContent = "Music: On";
+      }).catch(err => {
+        console.log("Audio play blocked by browser policy:", err);
+      });
+    }
+  }
+
+  function toggleAudio() {
+    if (!bgAudio) return;
+    if (isPlaying) {
+      bgAudio.pause();
+      isPlaying = false;
+      if (audioLabel) audioLabel.textContent = "Music: Off";
+    } else {
+      startAudio();
+    }
+  }
+
+  if (enterBtn && hbdCurtain) {
+    enterBtn.addEventListener('click', () => {
+      hbdCurtain.classList.add('hidden');
+      startAudio();
+    });
+  }
+
+  if (audioToggle) {
+    audioToggle.addEventListener('click', toggleAudio);
+  }
+
   // 1. Navigation Drawer Toggle
   const menuToggle = document.getElementById('menuToggle');
   const closeDrawer = document.getElementById('closeDrawer');
