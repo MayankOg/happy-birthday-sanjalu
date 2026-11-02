@@ -209,4 +209,32 @@ document.addEventListener('DOMContentLoaded', () => {
       window.assignPhoto(slotId, window.photoManifest[slotId]);
     });
   }
+
+  // 6. Tap to Claim / Printing Animation
+  const orderBtn = document.getElementById('orderBtn');
+  const orderBtnText = document.getElementById('orderBtnText');
+  const printBox = document.getElementById('printBox');
+  const printPaper = document.getElementById('printPaper');
+  const printStatusMsg = document.getElementById('printStatusMsg');
+
+  if (orderBtn) {
+    orderBtn.addEventListener('click', () => {
+      orderBtn.style.pointerEvents = 'none';
+      orderBtn.style.opacity = '0.7';
+      orderBtnText.textContent = 'Claiming...';
+      
+      printBox.style.display = 'flex';
+      
+      setTimeout(() => {
+        printPaper.classList.add('printing');
+        printStatusMsg.textContent = 'Printing Vol. XXIII proof copy...';
+      }, 300);
+
+      setTimeout(() => {
+        printStatusMsg.textContent = 'Book dispatched for 1st Dec! 🎁';
+        orderBtnText.textContent = 'Claimed by Sanjalu ✓';
+        orderBtn.style.background = '#2E7D32';
+      }, 2200);
+    });
+  }
 });

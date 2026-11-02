@@ -519,9 +519,29 @@
             <div class="teaser-badge">PRINT INCOMING</div>
             <h2 class="teaser-heading">Abhi party pending h!</h2>
             <p class="teaser-sub">ye website toh bas ek trailer tha...</p>
-            <div class="teaser-book-icon">📖</div>
+            <div class="teaser-book-icon" id="printIcon">📖</div>
             <p class="teaser-desc">a real clothbound photobook with handwriting empty spaces arriving in ur hands when uh come back.</p>
             <div class="teaser-date-badge">VOLUME I (PRINT) — DECEMBER 1, 2026</div>
+
+            <!-- Tap to Order / Print Animation -->
+            <button class="order-btn" id="orderBtn">
+              <span class="btn-sparkle">✨</span>
+              <span class="btn-text" id="orderBtnText">Tap to Claim Hardcopy</span>
+            </button>
+
+            <!-- Printing Animation Modal / Overlay -->
+            <div class="print-animation-box" id="printBox" style="display: none;">
+              <div class="printer-graphic">
+                <div class="printer-slot"></div>
+                <div class="printed-paper" id="printPaper">
+                  <div class="paper-line-header">SANJALU • VOL. XXIII</div>
+                  <div class="paper-line"></div>
+                  <div class="paper-line short"></div>
+                  <div class="paper-stamp">CLAIMED ✓</div>
+                </div>
+              </div>
+              <div class="print-status-msg" id="printStatusMsg">Sending order to printing press...</div>
+            </div>
           </div>
           <div class="caption-handwritten">happy birthday once again sanjaluuu 🫂</div>
         </div>
