@@ -564,11 +564,30 @@ html, body {
    LETTER & TEASER PAGES
    ========================================================================== */
 .letter-card {
+  position: relative;
   background: #FFFFFF;
   border: 1px solid var(--border-editorial);
   border-radius: 6px;
   padding: 2.5rem;
   box-shadow: var(--shadow-card);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.letter-card::before {
+  content: ;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/images/cover-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
+  filter: contrast(105%) brightness(105%);
 }
 
 .letter-tag {
