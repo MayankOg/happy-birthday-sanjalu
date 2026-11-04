@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>The Universe's Gift to Sanjalu ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070714;
+      --bg-card: rgba(22, 22, 44, 0.7);
+      --bg-card-border: rgba(255, 255, 255, 0.12);
+      --accent-purple: #9d4edd;
+      --accent-pink: #f72585;
+      --accent-cyan: #4cc9f0;
+      --accent-gold: #ffbe0b;
+      --text-main: #f8f9fa;
+      --text-muted: #a0a5c0;
+      --bot-bubble-bg: rgba(30, 27, 60, 0.85);
+      --user-bubble-bg: linear-gradient(135deg, #7209b7, #f72585);
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      height: 100dvh;
+      overflow: hidden;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+    }
+
+    /* Cosmic Background Canvas */
+    #cosmic-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Ambient Nebulae */
+    .nebula {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.28;
+      z-index: 1;
+      pointer-events: none;
+      animation: floatNebula 18s ease-in-out infinite alternate;
+    }
+    .nebula-1 {
+      top: -10%;
+      left: -10%;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, #7209b7, transparent 70%);
+    }
+    .nebula-2 {
+      bottom: -15%;
+      right: -10%;
+      width: 65vw;
+      height: 65vw;
+      background: radial-gradient(circle, #f72585, transparent 70%);
+      animation-duration: 22s;
+    }
+    .nebula-3 {
+      top: 40%;
+      right: -20%;
+      width: 45vw;
+      height: 45vw;
+      background: radial-gradient(circle, #4cc9f0, transparent 70%);
+      animation-duration: 16s;
+    }
+
+    @keyframes floatNebula {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, 40px) scale(1.12); }
+    }
+
+    /* Main App Layout */
+    .app-container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 680px;
+      height: 100%;
+      height: 100dvh;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      background: rgba(10, 10, 24, 0.45);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Header */
+    header {
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--bg-card-border);
+      background: rgba(14, 13, 32, 0.85);
+      backdrop-filter: blur(12px);
+      flex-shrink: 0;
+    }
+
+    .bot-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f72585, #7209b7, #4cc9f0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 16px rgba(247, 37, 133, 0.5);
+      animation: pulseAvatar 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseAvatar {
+      0% { box-shadow: 0 0 12px rgba(247, 37, 133, 0.4); transform: scale(1); }
+      100% { box-shadow: 0 0 24px rgba(76, 201, 240, 0.7); transform: scale(1.05); }
+    }
+
+    .avatar-face {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .bot-meta h1 {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bot-status {
+      font-size: 11px;
+      color: #06d6a0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 1px;
+      font-weight: 500;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background: #06d6a0;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #06d6a0;
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stardust-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 190, 11, 0.12);
+      border: 1px solid rgba(255, 190, 11, 0.3);
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      box-shadow: 0 0 10px rgba(255, 190, 11, 0.15);
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .stardust-pill.bump {
+      transform: scale(1.18);
+    }
+
+    .icon-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--bg-card-border);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+    .icon-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: scale(1.05);
+    }
+
+    /* Quest Progress Bar */
+    .quest-bar {
+      padding: 8px 18px;
+      background: rgba(10, 9, 26, 0.9);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .quest-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .quest-track {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .quest-fill {
+      height: 100%;
+      width: 15%;
+      background: linear-gradient(90deg, #7209b7, #f72585, #ffbe0b);
+      border-radius: 10px;
+      transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 0 10px rgba(247, 37, 133, 0.7);
+    }
+
+    /* Badge Bar */
+    .badge-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      background: rgba(13, 11, 30, 0.5);
+      overflow-x: auto;
+      scrollbar-width: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      flex-shrink: 0;
+    }
+    .badge-bar::-webkit-scrollbar { display: none; }
+
+    .badge-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+      opacity: 0.4;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .badge-item.unlocked {
+      opacity: 1;
+      background: rgba(247, 37, 133, 0.15);
+      border-color: rgba(247, 37, 133, 0.4);
+      color: #fff;
+      transform: scale(1.03);
+      box-shadow: 0 0 12px rgba(247, 37, 133, 0.3);
+    }
+
+    /* Chat Stream Area */
+    .chat-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 18px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Messages */
+    .message-row {
+      display: flex;
+      gap: 10px;
+      max-width: 90%;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: messageEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes messageEnter {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .message-row.bot {
+      align-self: flex-start;
+    }
+
+    .message-row.user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .bot-mini-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7209b7, #f72585);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(247, 37, 133, 0.3);
+    }
+
+    .bubble {
+      padding: 13px 17px;
+      border-radius: 20px;
+      font-size: 14.5px;
+      line-height: 1.55;
+      position: relative;
+      word-wrap: break-word;
+    }
+
+    .bot .bubble {
+      background: var(--bot-bubble-bg);
+      border: 1px solid var(--bg-card-border);
+      border-top-left-radius: 4px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+    }
+
+    .user .bubble {
+      background: var(--user-bubble-bg);
+      color: #fff;
+      border-top-right-radius: 4px;
+      font-weight: 500;
+      box-shadow: 0 4px 20px rgba(247, 37, 133, 0.4);
+    }
+
+    .bubble p + p {
+      margin-top: 8px;
+    }
+
+    .bubble .highlight-name {
+      color: #ffbe0b;
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(255, 190, 11, 0.4);
+    }
+
+    .bubble .cosmic-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 16px;
+      margin: 8px 0;
+      color: #e2e8f0;
+      border-left: 2px solid var(--accent-pink);
+      padding-left: 10px;
+    }
+
+    /* Typing Indicator */
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 12px 18px;
+      background: var(--bot-bubble-bg);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 20px;
+      border-top-left-radius: 4px;
+      width: fit-content;
+    }
+
+    .typing-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent-pink);
+      border-radius: 50%;
+      animation: typingBounce 1.4s infinite ease-in-out;
+    }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; background: var(--accent-purple); }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; background: var(--accent-cyan); }
+
+    @keyframes typingBounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-5px); opacity: 1; }
+    }
+
+    /* Interactive MCQ Cards Deck */
+    .mcq-container {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      width: 100%;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .mcq-btn {
+      width: 100%;
+      padding: 13px 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mcq-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: transparent;
+      transition: background 0.2s ease;
+    }
+
+    .mcq-btn:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(247, 37, 133, 0.4);
+      transform: translateX(4px);
+    }
+
+    .mcq-btn:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .mcq-btn.selected {
+      background: linear-gradient(135deg, rgba(114, 9, 183, 0.4), rgba(247, 37, 133, 0.4));
+      border-color: var(--accent-pink);
+      box-shadow: 0 0 16px rgba(247, 37, 133, 0.3);
+    }
+    .mcq-btn.selected::before {
+      background: var(--accent-pink);
+    }
+
+    .mcq-btn:disabled {
+      cursor: default;
+      opacity: 0.6;
+    }
+
+    .mcq-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .mcq-text {
+      flex: 1;
+      line-height: 1.4;
+    }
+
+    /* Cosmic Gift Box Area (Finale) */
+    .gift-box-wrapper {
+      padding: 24px 18px;
+      background: linear-gradient(145deg, rgba(30, 20, 60, 0.9), rgba(15, 12, 35, 0.95));
+      border: 1px solid rgba(255, 190, 11, 0.4);
+      border-radius: 24px;
+      box-shadow: 0 0 35px rgba(255, 190, 11, 0.2), inset 0 0 20px rgba(157, 78, 221, 0.2);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-top: 10px;
+      animation: glowBox 3s infinite alternate;
+    }
+
+    @keyframes glowBox {
+      0% { border-color: rgba(255, 190, 11, 0.3); box-shadow: 0 0 25px rgba(255, 190, 11, 0.15); }
+      100% { border-color: rgba(247, 37, 133, 0.6); box-shadow: 0 0 40px rgba(247, 37, 133, 0.3); }
+    }
+
+    .gift-3d {
+      width: 100px;
+      height: 100px;
+      cursor: pointer;
+      position: relative;
+      perspective: 600px;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .gift-3d:hover {
+      transform: scale(1.1) rotate(-3deg);
+    }
+    .gift-3d.shaking {
+      animation: shakeGift 0.6s infinite;
+    }
+
+    @keyframes shakeGift {
+      0%, 100% { transform: rotate(0) scale(1.05); }
+      20% { transform: rotate(-8deg) scale(1.08); }
+      40% { transform: rotate(8deg) scale(1.08); }
+      60% { transform: rotate(-5deg) scale(1.06); }
+      80% { transform: rotate(5deg) scale(1.06); }
+    }
+
+    .gift-emoji-icon {
+      font-size: 72px;
+      line-height: 100px;
+      filter: drop-shadow(0 0 18px rgba(255, 190, 11, 0.6));
+    }
+
+    .gift-instruction {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      animation: pulseText 1.5s infinite;
+    }
+
+    @keyframes pulseText {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.98); }
+    }
+
+    /* Final Decree Parchment */
+    .decree-card {
+      background: radial-gradient(circle at 50% 20%, #201744, #100b24 85%);
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      border-radius: 20px;
+      padding: 24px 20px;
+      text-align: center;
+      margin-top: 14px;
+      box-shadow: 0 0 40px rgba(247, 37, 133, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .decree-header {
+      font-family: var(--font-serif);
+      font-size: 21px;
+      color: var(--accent-gold);
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .decree-body {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: #f1f5f9;
+      text-align: left;
+    }
+
+    .decree-body p + p {
+      margin-top: 12px;
+    }
+
+    .decree-footer {
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.15);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .decree-actions {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .action-btn {
+      padding: 10px 18px;
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: none;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #ffbe0b, #fb5607);
+      color: #000;
+      box-shadow: 0 4px 15px rgba(255, 190, 11, 0.4);
+    }
+    .btn-gold:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(255, 190, 11, 0.6);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.14);
+      transform: scale(1.03);
+    }
+
+    /* Toast notification */
+    .toast-msg {
+      position: fixed;
+      top: 75px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: rgba(20, 15, 45, 0.95);
+      border: 1px solid var(--accent-pink);
+      padding: 9px 18px;
+      border-radius: 30px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(247, 37, 133, 0.4);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .toast-msg.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Confetti Canvas */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 99;
+    }
+
+    /* Mobile tweaks */
+    @media (max-width: 480px) {
+      header { padding: 12px 14px; }
+      .chat-scroll { padding: 16px 14px 20px; }
+      .bubble { font-size: 14px; padding: 12px 15px; }
+      .mcq-btn { font-size: 13.5px; padding: 11px 14px; }
+      .decree-card { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Animated Starfield -->
+  <canvas id="cosmic-canvas"></canvas>
+  <canvas id="confetti-canvas"></canvas>
+
+  <div class="nebula nebula-1"></div>
+  <div class="nebula nebula-2"></div>
+  <div class="nebula nebula-3"></div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast-msg">
+    <span id="toast-icon">✨</span>
+    <span id="toast-text">Stardust synchronized!</span>
+  </div>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header>
+      <div class="bot-profile">
+        <div class="avatar-wrapper">
+          <span class="avatar-face" id="avatar-emoji">🌌</span>
+        </div>
+        <div class="bot-meta">
+          <h1>Universe <span style="font-size: 12px; color: var(--accent-gold);">✨</span></h1>
+          <div class="bot-status">
+            <span class="status-dot"></span>
+            <span>Watching over Sanjalu</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="stardust-pill" id="stardust-display">
+          <span>✨</span>
+          <span id="stardust-count">2300</span>
+        </div>
+        <button class="icon-btn" id="sound-toggle" title="Toggle Celestial Sound">🔊</button>
+      </div>
+    </header>
+
+    <!-- Quest Progress Tracker -->
+    <div class="quest-bar">
+      <div class="quest-meta">
+        <span id="quest-stage-text">Cosmic Alignment: Stage 1 of 6</span>
+        <span id="quest-percent">16%</span>
+      </div>
+      <div class="quest-track">
+        <div class="quest-fill" id="quest-progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- Badge Showcase -->
+    <div class="badge-bar">
+      <div class="badge-item" id="badge-1">👑 23yo Legend</div>
+      <div class="badge-item" id="badge-2">🍝 Spaghetti Radar</div>
+      <div class="badge-item" id="badge-3">🏍️ Road Empress</div>
+      <div class="badge-item" id="badge-4">🐾 Juju's Starlight</div>
+      <div class="badge-item" id="badge-5">🎤 Voice of Stars</div>
+      <div class="badge-item" id="badge-6">💖 Forever Loved</div>
+    </div>
+
+    <!-- Main Chat Window -->
+    <div class="chat-scroll" id="chat-stream">
+      <!-- Chat items dynamically injected here -->
+    </div>
+  </div>
+
+  <script>
+    // --- Audio Synthesis via Web Audio API (Zero external audio files needed!) ---
+    class SoundEngine {
+      constructor() {
+        this.ctx = null;
+        this.muted = false;
+      }
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) {
+            this.ctx = new AudioContext();
+          }
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+      playPop() {
+        if (this.muted) return;
+        this.init();
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(480, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(900, this.ctx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.08);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.08);
+      }
+      playChime() {
+        if (this.muted) return;
+        this.init();
+        if (!this.ctx) return;
+        const freqs = [523.25, 659.25, 783.99, 1046.50]; // C Major arpeggio
+        freqs.forEach((f, idx) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(f, this.ctx.currentTime + idx * 0.06);
+          gain.gain.setValueAtTime(0.12, this.ctx.currentTime + idx * 0.06);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + idx * 0.06 + 0.6);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(this.ctx.currentTime + idx * 0.06);
+          osc.stop(this.ctx.currentTime + idx * 0.06 + 0.6);
+        });
+      }
+      playFanfare() {
+        if (this.muted) return;
+        this.init();
+        if (!this.ctx) return;
+        const notes = [440, 554.37, 659.25, 880, 1108.73];
+        notes.forEach((freq, i) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime + i * 0.09);
+          gain.gain.setValueAtTime(0.22, this.ctx.currentTime + i * 0.09);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + i * 0.09 + 0.8);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(this.ctx.currentTime + i * 0.09);
+          osc.stop(this.ctx.currentTime + i * 0.09 + 0.8);
+        });
+      }
+    }
+
+    const sound = new SoundEngine();
+
+    // Sound toggle button
+    const soundToggle = document.getElementById('sound-toggle');
+    soundToggle.addEventListener('click', () => {
+      sound.muted = !sound.muted;
+      soundToggle.textContent = sound.muted ? '🔇' : '🔊';
+      showToast(sound.muted ? 'Celestial sounds muted' : 'Celestial sounds active', '✨');
+    });
+
+    // --- Starfield Background Canvas ---
+    const bgCanvas = document.getElementById('cosmic-canvas');
+    const bgCtx = bgCanvas.getContext('2d');
+    let stars = [];
+
+    function resizeBgCanvas() {
+      bgCanvas.width = window.innerWidth;
+      bgCanvas.height = window.innerHeight;
+      initStars();
+    }
+    window.addEventListener('resize', resizeBgCanvas);
+
+    function initStars() {
+      stars = [];
+      const count = Math.floor((bgCanvas.width * bgCanvas.height) / 3800);
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * bgCanvas.width,
+          y: Math.random() * bgCanvas.height,
+          radius: Math.random() * 1.5 + 0.3,
+          alpha: Math.random(),
+          speed: Math.random() * 0.02 + 0.005,
+          color: Math.random() > 0.3 ? '#ffffff' : (Math.random() > 0.5 ? '#ffbe0b' : '#f72585')
+        });
+      }
+    }
+
+    function renderStarfield() {
+      bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+      for (let s of stars) {
+        s.alpha += s.speed;
+        const currentAlpha = 0.2 + (Math.sin(s.alpha) + 1) * 0.4;
+        bgCtx.fillStyle = s.color;
+        bgCtx.globalAlpha = currentAlpha;
+        bgCtx.beginPath();
+        bgCtx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+        bgCtx.fill();
+      }
+      bgCtx.globalAlpha = 1;
+      requestAnimationFrame(renderStarfield);
+    }
+    resizeBgCanvas();
+    renderStarfield();
+
+    // --- Confetti System ---
+    const confettiCanvas = document.getElementById('confetti-canvas');
+    const confCtx = confettiCanvas.getContext('2d');
+    let confettiParticles = [];
+
+    function resizeConfetti() {
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeConfetti);
+    resizeConfetti();
+
+    function triggerConfettiBurst() {
+      const colors = ['#f72585', '#7209b7', '#4cc9f0', '#ffbe0b', '#ffffff', '#ffd166'];
+      for (let i = 0; i < 90; i++) {
+        confettiParticles.push({
+          x: confettiCanvas.width / 2 + (Math.random() * 100 - 50),
+          y: confettiCanvas.height / 2 + 50,
+          vx: (Math.random() - 0.5) * 14,
+          vy: -(Math.random() * 14 + 6),
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 10,
+          gravity: 0.35,
+          alpha: 1
+        });
+      }
+      renderConfetti();
+    }
+
+    function renderConfetti() {
+      confCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      for (let i = confettiParticles.length - 1; i >= 0; i--) {
+        const p = confettiParticles[i];
+        p.vy += p.gravity;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rotation += p.rotationSpeed;
+        p.alpha -= 0.012;
+
+        if (p.alpha <= 0) {
+          confettiParticles.splice(i, 1);
+          continue;
+        }
+
+        confCtx.save();
+        confCtx.globalAlpha = p.alpha;
+        confCtx.translate(p.x, p.y);
+        confCtx.rotate((p.rotation * Math.PI) / 180);
+        confCtx.fillStyle = p.color;
+        confCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
+        confCtx.restore();
+      }
+      if (confettiParticles.length > 0) {
+        requestAnimationFrame(renderConfetti);
+      }
+    }
+
+    // --- Toast UI ---
+    function showToast(text, icon = '✨') {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-icon').textContent = icon;
+      document.getElementById('toast-text').textContent = text;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+
+    // --- State & Stardust ---
+    let currentStage = 0;
+    let stardust = 2300;
+
+    function addStardust(amount) {
+      stardust += amount;
+      const countEl = document.getElementById('stardust-count');
+      const pill = document.getElementById('stardust-display');
+      countEl.textContent = stardust;
+      pill.classList.add('bump');
+      setTimeout(() => pill.classList.remove('bump'), 300);
+    }
+
+    function updateQuestProgress(stageIdx, totalStages = 6) {
+      const pct = Math.min(100, Math.round(((stageIdx + 1) / totalStages) * 100));
+      document.getElementById('quest-stage-text').textContent = `Cosmic Alignment: Stage ${stageIdx + 1} of ${totalStages}`;
+      document.getElementById('quest-percent').textContent = `${pct}%`;
+      document.getElementById('quest-progress-fill').style.width = `${pct}%`;
+    }
+
+    function unlockBadge(badgeId, badgeName) {
+      const el = document.getElementById(badgeId);
+      if (el && !el.classList.contains('unlocked')) {
+        el.classList.add('unlocked');
+        showToast(`Unlocked Badge: ${badgeName}!`, '🏆');
+        sound.playFanfare();
+      }
+    }
+
+    // --- Chat Stream Controller ---
+    const chatStream = document.getElementById('chat-stream');
+
+    function scrollToBottom() {
+      setTimeout(() => {
+        chatStream.scrollTop = chatStream.scrollHeight;
+      }, 50);
+    }
+
+    function showTypingIndicator() {
+      const indicator = document.createElement('div');
+      indicator.className = 'message-row bot';
+      indicator.id = 'active-typing';
+      indicator.innerHTML = `
+        <div class="bot-mini-avatar">🌌</div>
+        <div class="typing-indicator">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
+      `;
+      chatStream.appendChild(indicator);
+      scrollToBottom();
+      return indicator;
+    }
+
+    function removeTypingIndicator() {
+      const ind = document.getElementById('active-typing');
+      if (ind) ind.remove();
+    }
+
+    function appendBotMessage(htmlContent, delayMs = 600, callback) {
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        sound.playChime();
+
+        const row = document.createElement('div');
+        row.className = 'message-row bot';
+        row.innerHTML = `
+          <div class="bot-mini-avatar">🌌</div>
+          <div class="bubble">${htmlContent}</div>
+        `;
+        chatStream.appendChild(row);
+        scrollToBottom();
+
+        if (callback) callback();
+      }, delayMs);
+    }
+
+    function appendUserMessage(text) {
+      sound.playPop();
+      const row = document.createElement('div');
+      row.className = 'message-row user';
+      row.innerHTML = `<div class="bubble">${text}</div>`;
+      chatStream.appendChild(row);
+      scrollToBottom();
+    }
+
+    function appendMCQOptions(options, onSelect) {
+      const container = document.createElement('div');
+      container.className = 'mcq-container';
+
+      options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'mcq-btn';
+        btn.innerHTML = `
+          <span class="mcq-icon">${opt.icon || '✨'}</span>
+          <span class="mcq-text">${opt.text}</span>
+        `;
+        btn.addEventListener('click', () => {
+          sound.init();
+          // Disable all buttons in this container
+          const allBtns = container.querySelectorAll('.mcq-btn');
+          allBtns.forEach(b => b.disabled = true);
+          btn.classList.add('selected');
+
+          appendUserMessage(opt.text);
+          addStardust(150);
+          onSelect(opt, idx);
+        });
+        container.appendChild(btn);
+      });
+
+      chatStream.appendChild(container);
+      scrollToBottom();
+    }
+
+    // --- GAME STORYLINE / QUEST DATA ---
+    const stages = [
+      // Stage 0: Prologue & Identity Verification
+      {
+        botIntro: `
+          <p>✨ <strong>BEEP BOOP... Aligning Celestial Frequencies...</strong> ✨</p>
+          <p>Greetings, mortal! I am <strong>The Universe</strong>. 🌌</p>
+          <p>My gravitational sensors just detected an astronomical level of cuteness, sass, and fierce energy in this sector. Before I reveal your secret cosmic gifts, verify your identity:</p>
+        `,
+        options: [
+          { icon: '👑', text: 'I am Sanjalu (officially 23 and thriving)', key: 'sanjalu' },
+          { icon: '🐥', text: 'Mera naam chotu hai and I demand my gifts', key: 'chotu' },
+          { icon: '✨', text: 'Both! The one and only Sanjalu / Chotu', key: 'both' }
+        ],
+        onAnswer: (opt) => {
+          unlockBadge('badge-1', '23yo Legend');
+          updateQuestProgress(0);
+
+          let reply = '';
+          if (opt.key === 'sanjalu') {
+            reply = `<p><strong>Verification Successful!</strong> 🌟</p><p>The stars bow before the official 23-year-old icon! Access granted with highest cosmic VIP security clearance.</p>`;
+          } else if (opt.key === 'chotu') {
+            reply = `<p><strong>Aha! Chotu confirmed!</strong> 🐥</p><p>The cosmos has noted your demand and immediately dispatched emergency blessings to your coordinates!</p>`;
+          } else {
+            reply = `<p><strong>Full Dual Access Granted!</strong> 👑</p><p>Sanjalu in the streets, Chotu in the heart. The supreme combination in this entire galaxy!</p>`;
+          }
+          appendBotMessage(reply, 700, () => nextStage());
+        }
+      },
+
+      // Stage 1: The Energy & Palate Scan
+      {
+        botIntro: `
+          <p>Performing an energetic scan of your 23rd year on Earth... 🛰️</p>
+          <p>Every celestial legend draws power from specific sacred sources. What is currently maintaining the <span class="highlight-name">Sanjalu Constellation</span> at peak 100% capacity?</p>
+        `,
+        options: [
+          { icon: '🍝', text: 'Spaghetti cravings & hunting hidden pure-veg spots', key: 'food' },
+          { icon: '🏍️', text: 'Open roads, Bullet rumble & midnight scooty wind', key: 'ride' },
+          { icon: '💅', text: 'Fresh nail art at Walk Mall & effortless outfits', key: 'style' },
+          { icon: '🤫', text: 'Pretending to have zero feelings while being a softie', key: 'softie' }
+        ],
+        onAnswer: (opt) => {
+          unlockBadge('badge-2', 'Spaghetti Radar');
+          updateQuestProgress(1);
+
+          let reply = '';
+          if (opt.key === 'food') {
+            reply = `<p>🍝 <strong>The Universe Decrees:</strong> You shall receive an eternal, never-ending supply of perfect pasta, and you shall never be tricked by non-veg surprises!</p>`;
+          } else if (opt.key === 'ride') {
+            unlockBadge('badge-3', 'Road Empress');
+            reply = `<p>🏍️ <strong>Cosmic Wind Blessing:</strong> Zero red lights on your path, perfect highway curves, and the wind always in your hair.</p>`;
+          } else if (opt.key === 'style') {
+            reply = `<p>💅 <strong>Aesthetic Synchronized:</strong> 10/10 style rating across the Milky Way. Also, zero broken nail paint allowed by law!</p>`;
+          } else {
+            reply = `<p>🤫 <strong>The Stars Know the Truth:</strong> You act tough, but everyone who loves you knows you have the softest, purest golden heart in the galaxy.</p>`;
+          }
+          appendBotMessage(reply, 750, () => nextStage());
+        }
+      },
+
+      // Stage 2: The Vault of Courage & Little Victories
+      {
+        botIntro: `
+          <p>The stars watched you closely this past year. You traveled between cities, fought through tough days, learned to navigate everything on your own, and grew so strong.</p>
+          <p>Which cosmic flex are you proudest of right now, <span class="highlight-name">Sanjalu</span>?</p>
+        `,
+        options: [
+          { icon: '💪', text: 'That time I literally lifted Maya up in 1o1', key: 'lift' },
+          { icon: '🏠', text: 'Casa Rio & building my independent life in Mumbai', key: 'home' },
+          { icon: '💅', text: 'Defeating my nail-biting habit once and for all', key: 'nails' },
+          { icon: '🛡️', text: 'Handling heavy storms with quiet grace and a smile', key: 'resilience' }
+        ],
+        onAnswer: (opt) => {
+          unlockBadge('badge-3', 'Road Empress');
+          updateQuestProgress(2);
+
+          let reply = '';
+          if (opt.key === 'lift') {
+            reply = `<p>💪 <strong>The 1o1 Legend!</strong> The cosmic records confirmed: you lifted a whole human being with sheer effortless power. Truly an Olympian feat!</p>`;
+          } else if (opt.key === 'home') {
+            reply = `<p>🏠 <strong>Cosmic Real Estate Blessing!</strong> Stepping out, having your own space, paying your bills, and adulting on your terms. The stars are so proud of you!</p>`;
+          } else if (opt.key === 'nails') {
+            reply = `<p>💅 <strong>Triumph over Old Habits!</strong> Small habits take the biggest willpower. Walk Mall honors your victory!</p>`;
+          } else {
+            reply = `<p>🛡️ <strong>Quiet Resilience:</strong> You didn't just survive the heavy days; you walked through them with your chin held high. That's true majesty.</p>`;
+          }
+          appendBotMessage(reply, 800, () => nextStage());
+        }
+      },
+
+      // Stage 3: The Star of Juju
+      {
+        botIntro: `
+          <p>Look up at the softest cluster of stars in the night sky. 🌌</p>
+          <p>There is a special little star that purrs whenever you think of him. He asked me to send you a direct whisper today. Do you know what he said?</p>
+        `,
+        options: [
+          { icon: '🐾', text: '"Thank you for giving me the best summer ever, Mumma"', key: 'thanks' },
+          { icon: '🌟', text: '"I watch over your balcony from the Milky Way every night"', key: 'watch' },
+          { icon: '🐱', text: '"All of the above, with infinite cuddles and zero worries"', key: 'all' }
+        ],
+        onAnswer: (opt) => {
+          unlockBadge('badge-4', "Juju's Starlight");
+          updateQuestProgress(3);
+
+          const reply = `
+            <p>🐾 <strong>He purrs gently across the cosmos...</strong></p>
+            <div class="cosmic-quote">"Pure love never leaves the universe, Sanjalu. It just turns into an eternal guardian star around you."</div>
+            <p>He is always with you, resting peacefully, smiling at every milestone you reach. 🤍</p>
+          `;
+          appendBotMessage(reply, 850, () => nextStage());
+        }
+      },
+
+      // Stage 4: The Unfinished Melody
+      {
+        botIntro: `
+          <p>My celestial audio sensors also detected something beautiful in your history: an acoustic guitar, a stage, and a girl singing <em>Lag Ja Gale</em> with the sweetest voice in the room.</p>
+          <p>What is the Universe's cosmic recommendation for your music?</p>
+        `,
+        options: [
+          { icon: '🎤', text: 'The mic is resting — I will sing whenever my heart is ready', key: 'ready' },
+          { icon: '🎸', text: 'Drop an acoustic reel someday and surprise everyone', key: 'reel' },
+          { icon: '🎶', text: 'Keep singing quietly because it heals my soul', key: 'soul' }
+        ],
+        onAnswer: (opt) => {
+          unlockBadge('badge-5', 'Voice of Stars');
+          updateQuestProgress(4);
+
+          const reply = `
+            <p>🎵 <strong>No rush. Zero pressure.</strong></p>
+            <p>Music is yours to keep, pause, or resume whenever you feel the spark. Just remember that your voice has magic in it. The universe is always listening.</p>
+          `;
+          appendBotMessage(reply, 750, () => nextStage());
+        }
+      },
+
+      // Stage 5: The Grand Climax: The 365-Day Truth
+      {
+        botIntro: `
+          <p>We have arrived at the core of the galaxy. 🌌✨</p>
+          <p>The human calendar on Earth says <strong>3 November has officially ended</strong>...</p>
+          <p>Ordinary mortals think birthdays only last 24 hours. But by celestial law, for how long does the Universe decree that <span class="highlight-name">Sanjalu is the most loved</span>?</p>
+        `,
+        options: [
+          { icon: '👑', text: 'All 365 days, non-stop, obviously!', key: 'all365' },
+          { icon: '🌌', text: 'For infinity, beyond time and calendars', key: 'infinity' },
+          { icon: '💖', text: 'Every single morning she wakes up and breathes', key: 'everyday' }
+        ],
+        onAnswer: (opt) => {
+          unlockBadge('badge-6', 'Forever Loved');
+          updateQuestProgress(5);
+
+          appendBotMessage(`
+            <p>🎉 <strong>CORRECT! 100% SYNCHRONIZED!</strong> 🎉</p>
+            <p>Calendar dates mean nothing to the cosmos. 3 November was just a marker, but the love, the hype, and the care for you?</p>
+            <p><strong style="color: #ffbe0b;">It never ends. Not today, not tomorrow, not ever.</strong></p>
+            <p>Now, as promised... tap your final celestial gift below:</p>
+          `, 800, () => {
+            renderFinalGiftBox();
+          });
+        }
+      }
+    ];
+
+    function nextStage() {
+      currentStage++;
+      if (currentStage < stages.length) {
+        setTimeout(() => {
+          const s = stages[currentStage];
+          appendBotMessage(s.botIntro, 700, () => {
+            appendMCQOptions(s.options, (opt, idx) => {
+              s.onAnswer(opt);
+            });
+          });
+        }, 600);
+      }
+    }
+
+    // --- Render Final Gift Box & Decree ---
+    function renderFinalGiftBox() {
+      const boxWrapper = document.createElement('div');
+      boxWrapper.className = 'gift-box-wrapper';
+      boxWrapper.id = 'cosmic-gift-box';
+      boxWrapper.innerHTML = `
+        <div class="gift-instruction">Tap to Open the Universe's Gift</div>
+        <div class="gift-3d" id="interactive-gift">
+          <div class="gift-emoji-icon">🎁</div>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted);">Contains: Eternal Blessings & The Official Cosmic Decree</p>
+      `;
+
+      chatStream.appendChild(boxWrapper);
+      scrollToBottom();
+
+      const gift = document.getElementById('interactive-gift');
+      let opened = false;
+
+      gift.addEventListener('click', () => {
+        if (opened) return;
+        opened = true;
+        sound.init();
+        gift.classList.add('shaking');
+
+        setTimeout(() => {
+          gift.classList.remove('shaking');
+          triggerConfettiBurst();
+          sound.playFanfare();
+
+          boxWrapper.innerHTML = `
+            <div class="decree-card">
+              <div class="decree-header">📜 The Decree of the Cosmos</div>
+              <div class="decree-body">
+                <p><strong>To Sanjalu (Chotu):</strong></p>
+                <p>Even though November 3 has passed on Earth, know this with total certainty: <em>our love, admiration, and prayers for you do not have an expiration date.</em></p>
+                <p>You are celebrated across every day of your 23rd year. The universe is actively conspiring to give you:</p>
+                <ul style="margin-left: 20px; margin-top: 6px; line-height: 1.8;">
+                  <li>✨ Zero anxiety and infinite calm in every storm</li>
+                  <li>🍝 Endless hot spaghetti & secret delicious vegetarian meals</li>
+                  <li>🏍️ Clear roads, high speeds, and safe journeys wherever you ride</li>
+                  <li>🤍 Quiet protection from a tiny, loving star in the sky</li>
+                  <li>👑 The knowledge that to those who truly see you, <strong>you are always the most.</strong></li>
+                </ul>
+                <p style="margin-top: 14px;">Keep smiling, keep lifting people up, and never stop being your wild, authentic, beautiful self.</p>
+              </div>
+
+              <div class="decree-footer">
+                <span>Signed: The Universe & Maya</span>
+                <span>Vol. XXIII • ∞</span>
+              </div>
+
+              <div class="decree-actions">
+                <a href="../" class="action-btn btn-gold">
+                  <span>📖 Back to Retrospective Monograph</span>
+                </a>
+                <button class="action-btn btn-secondary" onclick="location.reload()">
+                  <span>🔄 Replay Cosmic Quest</span>
+                </button>
+              </div>
+            </div>
+          `;
+          scrollToBottom();
+        }, 1200);
+      });
+    }
+
+    // --- Start Game on Load ---
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const first = stages[0];
+        appendBotMessage(first.botIntro, 600, () => {
+          appendMCQOptions(first.options, (opt, idx) => {
+            first.onAnswer(opt);
+          });
+        });
+      }, 500);
+    });
+  </script>
+</body>
+</html>
